@@ -1,0 +1,25 @@
+# docker-compose.yml - Multi-container setup for Vanguard Credit System
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: credit_app_container
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=production
+      - FLASK_DEBUG=False
+      - SECRET_KEY=prod-banking-secret-key-987654321-vanguard
+    volumes:
+      - credit_db_data:/app/database
+      - credit_models_data:/app/models
+      - credit_logs_data:/app/logs
+    restart: always
+
+volumes:
+  credit_db_data:
+  credit_models_data:
+  credit_logs_data:

@@ -1,0 +1,219 @@
+{% extends 'base.html' %}
+
+{% block title %}New Application | Vanguard Credit Services{% endblock %}
+{% block header_title %}Credit Card Application Intake{% endblock %}
+
+{% block content %}
+<div class="position-relative">
+    <!-- Spinning Loader backdrop overlay -->
+    <div id="loader-overlay" class="position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 align-items-center justify-content-center flex-column" style="display: none; z-index: 2000;">
+        <div class="banking-loader mb-3"></div>
+        <h4 class="text-white font-weight-bold">Evaluating Risk Profile</h4>
+        <p class="text-muted small text-center px-3">Running multi-model ensemble classification...<br>Compiling Basel-compliant audit metrics...</p>
+    </div>
+
+    <form id="credit-prediction-form" method="POST" action="{{ url_for('predict.predict_form') }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+        
+        <div class="row">
+            <!-- Col 1: Personal & Demographics -->
+            <div class="col-lg-6">
+                <div class="glass-card">
+                    <h2 class="h5 font-weight-bold mb-3 border-bottom pb-2" style="border-color: var(--border-color) !important; color: var(--accent-cyan);">
+                        <i class="fas fa-user-tie me-2"></i> Applicant Demographics
+                    </h2>
+                    
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="age-slider" class="form-label small font-weight-bold">Age: <span id="age-val" class="text-primary font-weight-bold">30</span></label>
+                            <input type="range" class="form-range" min="18" max="85" value="30" name="age" id="age-slider" data-value-target="age-val">
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label for="gender" class="form-label small font-weight-bold">Gender</label>
+                            <select class="form-select" name="gender" id="gender" required>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label for="education" class="form-label small font-weight-bold">Highest Education Level</label>
+                            <select class="form-select" name="education" id="education" required>
+                                <option value="High School">High School</option>
+                                <option value="Bachelor" selected>Bachelor's Degree</option>
+                                <option value="Master">Master's Degree</option>
+                                <option value="PhD">PhD / Doctorate</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label for="marital_status" class="form-label small font-weight-bold">Marital Status</label>
+                            <select class="form-select" name="marital_status" id="marital_status" required>
+                                <option value="Single" selected>Single</option>
+                                <option value="Married">Married</option>
+                                <option value="Divorced">Divorced</option>
+                                <option value="Widowed">Widowed</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label for="dependents-slider" class="form-label small font-weight-bold">Number of Dependents: <span id="dependents-val" class="text-primary font-weight-bold">0</span></label>
+                            <input type="range" class="form-range" min="0" max="8" value="0" name="dependents" id="dependents-slider" data-value-target="dependents-val">
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label for="residence_type" class="form-label small font-weight-bold">Residence Type</label>
+                            <select class="form-select" name="residence_type" id="residence_type" required>
+                                <option value="Owned">Owned Outright</option>
+                                <option value="Mortgaged">Mortgaged</option>
+                                <option value="Rented" selected>Rented</option>
+                                <option value="With Parents">With Parents</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Financial Profile Card -->
+                <div class="glass-card">
+                    <h2 class="h5 font-weight-bold mb-3 border-bottom pb-2" style="border-color: var(--border-color) !important; color: var(--accent-cyan);">
+                        <i class="fas fa-coins me-2"></i> Financial Profile
+                    </h2>
+                    
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="annual_income" class="form-label small font-weight-bold">Annual Gross Income ($)</label>
+                            <input type="number" step="100" min="1000" class="form-control" name="annual_income" id="annual_income" value="65000" required>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label for="monthly_income" class="form-label small font-weight-bold">Declared Monthly Net Income ($)</label>
+                            <input type="number" step="10" min="100" class="form-control" name="monthly_income" id="monthly_income" value="5400" required>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label for="monthly_expenses" class="form-label small font-weight-bold">Monthly Obligated Expenses ($)</label>
+                            <input type="number" step="10" min="0" class="form-control" name="monthly_expenses" id="monthly_expenses" value="2200" required>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label for="bank_balance" class="form-label small font-weight-bold">Direct Deposit Bank Balance ($)</label>
+                            <input type="number" step="10" min="0" class="form-control" name="bank_balance" id="bank_balance" value="3500" required>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label for="savings" class="form-label small font-weight-bold">Declared Liquid Savings ($)</label>
+                            <input type="number" step="10" min="0" class="form-control" name="savings" id="savings" value="8000" required>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label for="investment" class="form-label small font-weight-bold">Active Portfolio Investments ($)</label>
+                            <input type="number" step="10" min="0" class="form-control" name="investment" id="investment" value="12000" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Col 2: Job, Credit History and Target Details -->
+            <div class="col-lg-6">
+                <!-- Employment Stability -->
+                <div class="glass-card">
+                    <h2 class="h5 font-weight-bold mb-3 border-bottom pb-2" style="border-color: var(--border-color) !important; color: var(--accent-cyan);">
+                        <i class="fas fa-briefcase me-2"></i> Employment Profile
+                    </h2>
+                    
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="occupation" class="form-label small font-weight-bold">Occupation Field</label>
+                            <select class="form-select" name="occupation" id="occupation" required>
+                                <option value="Software Engineer" selected>Software Engineer</option>
+                                <option value="Manager">Corporate Manager</option>
+                                <option value="Accountant">Accountant</option>
+                                <option value="Sales Executive">Sales Executive</option>
+                                <option value="Teacher">Teacher / Academic</option>
+                                <option value="Nurse">Medical Nurse</option>
+                                <option value="Self-Employed">Self-Employed Entrepreneur</option>
+                                <option value="Student">Student</option>
+                                <option value="Unemployed">Unemployed</option>
+                                <option value="Retired">Retired</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label for="employment_type" class="form-label small font-weight-bold">Employment Type</label>
+                            <select class="form-select" name="employment_type" id="employment_type" required>
+                                <option value="Full-time" selected>Full-time Contract</option>
+                                <option value="Part-time">Part-time Hourly</option>
+                                <option value="Self-employed">Self-employed</option>
+                                <option value="Unemployed">Unemployed / None</option>
+                                <option value="Contract">Independent Contractor</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-12">
+                            <label for="employment-slider" class="form-label small font-weight-bold">Years of Employment: <span id="employment-val" class="text-primary font-weight-bold">3.5</span></label>
+                            <input type="range" class="form-range" min="0.0" max="40.0" step="0.5" value="3.5" name="years_of_employment" id="employment-slider" data-value-target="employment-val">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Credit History & Liabilities -->
+                <div class="glass-card">
+                    <h2 class="h5 font-weight-bold mb-3 border-bottom pb-2" style="border-color: var(--border-color) !important; color: var(--accent-cyan);">
+                        <i class="fas fa-file-invoice-dollar me-2"></i> Credit History & Liabilities
+                    </h2>
+                    
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="credit-slider" class="form-label small font-weight-bold">Credit Score (FICO): <span id="credit-val" class="text-primary font-weight-bold">680</span></label>
+                            <input type="range" class="form-range" min="300" max="850" value="680" name="credit_score" id="credit-slider" data-value-target="credit-val">
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label for="loans-slider" class="form-label small font-weight-bold">Existing Active Loans: <span id="loans-val" class="text-primary font-weight-bold">1</span></label>
+                            <input type="range" class="form-range" min="0" max="8" value="1" name="existing_loans" id="loans-slider" data-value-target="loans-val">
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label for="debt-slider" class="form-label small font-weight-bold">Debt Ratio (DTI): <span id="debt-val" class="text-primary font-weight-bold">35.0%</span></label>
+                            <input type="range" class="form-range" min="0.0" max="1.5" step="0.01" value="0.35" name="debt_ratio" id="debt-slider" data-value-target="debt-val" data-format="percentage">
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label for="loan_amount" class="form-label small font-weight-bold">Requested Credit Limit ($)</label>
+                            <input type="number" step="500" min="500" class="form-control" name="loan_amount" id="loan_amount" value="15000" required>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label for="credit_history" class="form-label small font-weight-bold">Credit Bureau History Rating</label>
+                            <select class="form-select" name="credit_history" id="credit_history" required>
+                                <option value="Good" selected>Good (No defaults, timely payments)</option>
+                                <option value="Bad">Bad (Past defaults, collections)</option>
+                                <option value="None">None (No historical bureau record)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label for="loan_history" class="form-label small font-weight-bold">Historical Bank Loan History</label>
+                            <select class="form-select" name="loan_history" id="loan_history" required>
+                                <option value="Good" selected>Good (TIMELY pay off)</option>
+                                <option value="Bad">Bad (Late payments, delinquencies)</option>
+                                <option value="None">None (First time loan applicant)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-12 text-center mb-5">
+                <button type="submit" class="btn btn-primary-neon btn-lg px-5 py-3">
+                    <i class="fas fa-wand-magic-sparkles me-2"></i> Compute Approval Decision
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block title %}Batch Upload | Vanguard Credit Services{% endblock %}
+{% block header_title %}Batch Processing Center{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="glass-card">
+            <h3 class="h4 font-weight-bold mb-2">Automated Batch Underwriting</h3>
+            <p class="text-muted small mb-4">
+                Upload multiple applicant profiles formatted as a CSV spreadsheet. The system will run classification models in parallel, store the outputs in the prediction audit database, and update dashboard performance figures.
+            </p>
+            
+            <form id="batch-upload-form" method="POST" action="{{ url_for('predict.batch_predict') }}" enctype="multipart/form-data">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                
+                <!-- Drag & Drop container -->
+                <div class="drag-drop-zone mb-4" id="drag-drop-zone">
+                    <i class="fas fa-cloud-arrow-up fs-1 text-primary mb-3"></i>
+                    <p id="upload-text-label" class="mb-0">
+                        Drag and drop your credit application CSV here, or <strong>click to browse files</strong>.
+                    </p>
+                    <input type="file" name="file" id="file-upload-input" class="d-none" accept=".csv">
+                </div>
+                
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <a href="{{ url_for('predict.download_template') }}" class="btn btn-outline-secondary text-white btn-sm border-secondary">
+                        <i class="fas fa-file-excel me-2"></i> Download Sample CSV Template
+                    </a>
+                    <button type="submit" class="btn btn-primary-neon px-4 py-2">
+                        <i class="fas fa-bolt me-2"></i> Process Batch
+                    </button>
+                </div>
+            </form>
+        </div>
+        
+        <!-- Field Structure Specifications -->
+        <div class="glass-card mt-4">
+            <h4 class="h5 font-weight-bold mb-3" style="color: var(--accent-cyan);"><i class="fas fa-list-check me-2"></i> Mandatory CSV Headers</h4>
+            <p class="text-muted small">
+                Your spreadsheet must include precisely the following headers in exact spelling (case-sensitive):
+            </p>
+            <div class="bg-dark bg-opacity-50 p-3 rounded font-monospace small mb-3 border border-secondary border-opacity-20 text-muted" style="word-break: break-all;">
+                Age, Gender, Occupation, Employment Type, Education, Annual Income, Monthly Income, Monthly Expenses, Credit Score, Loan Amount, Existing Loans, Debt Ratio, Years of Employment, Marital Status, Residence Type, Dependents, Bank Balance, Savings, Investment, Loan History, Credit History
+            </div>
+            
+            <div class="table-responsive">
+                <table class="table table-sm custom-table small m-0">
+                    <thead>
+                        <tr>
+                            <th>Variable Name</th>
+                            <th>Value Types</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Age</td>
+                            <td>Integer</td>
+                            <td>34</td>
+                        </tr>
+                        <tr>
+                            <td>Gender</td>
+                            <td>Male, Female, Other</td>
+                            <td>Female</td>
+                        </tr>
+                        <tr>
+                            <td>Credit Score</td>
+                            <td>Integer (300 to 850)</td>
+                            <td>720</td>
+                        </tr>
+                        <tr>
+                            <td>Debt Ratio</td>
+                            <td>Decimal (0.0 to 1.5)</td>
+                            <td>0.35</td>
+                        </tr>
+                        <tr>
+                            <td>Credit History</td>
+                            <td>Good, Bad, None</td>
+                            <td>Good</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

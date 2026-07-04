@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+
+{% block title %}Prediction Result | Vanguard Credit Services{% endblock %}
+{% block header_title %}Decision Analysis Report{% endblock %}
+
+{% block content %}
+<!-- Configure status specific variables -->
+{% if pred.approval_status == 'Approved' %}
+    {% set theme_color = 'var(--success-color)' %}
+    {% set badge_class = 'badge-approved' %}
+    {% set bg_alert = 'rgba(16, 185, 129, 0.1)' %}
+    {% set header_icon = 'fa-circle-check text-success' %}
+{% else %}
+    {% set theme_color = 'var(--danger-color)' %}
+    {% set badge_class = 'badge-rejected' %}
+    {% set bg_alert = 'rgba(239, 68, 68, 0.1)' %}
+    {% set header_icon = 'fa-circle-xmark text-danger' %}
+{% endif %}
+
+<div class="row">
+    <!-- Summary Column -->
+    <div class="col-lg-4">
+        <div class="glass-card text-center py-5">
+            <div class="fs-1 mb-3"><i class="fa-solid {{ header_icon }}"></i></div>
+            
+            <h2 class="h3 font-weight-bold mb-1">{{ pred.approval_status.upper() }}</h2>
+            <p class="text-muted small mb-4">Application ID: #VC-{{ pred.id }}</p>
+            
+            <!-- Circular gauge -->
+            <div class="gauge-container mb-4">
+                <div class="gauge-circle" data-probability="{{ pred.probability }}" data-color="{{ theme_color }}">
+                    <div class="gauge-inner">
+                        <span class="fs-3 font-weight-bold text-white">{{ (pred.probability * 100) | round(1) }}%</span>
+                        <span class="text-muted" style="font-size: 0.75rem;">Approval Prob</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4 pt-3 border-top" style="border-color: var(--border-color) !important;">
+                <div class="col-6 border-end" style="border-color: var(--border-color) !important;">
+                    <div class="text-muted small">Confidence</div>
+                    <div class="fs-5 font-weight-bold">{{ pred.confidence_score | round(1) }}%</div>
+                </div>
+                <div class="col-6">
+                    <div class="text-muted small">Risk Class</div>
+                    <div class="fs-5 font-weight-bold" style="color: {% if pred.risk_category == 'Low' %}var(--success-color){% elif pred.risk_category == 'Medium' %}var(--warning-color){% else %}var(--danger-color){% endif %};">
+                        {{ pred.risk_category }}
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-4 d-flex flex-column gap-2 px-3">
+                <a href="{{ url_for('predict.export_pdf') }}" class="btn btn-outline-secondary text-white btn-sm border-secondary"><i class="fas fa-file-pdf me-2 text-danger"></i> Export PDF Report</a>
+                <a href="{{ url_for('predict.predict_form') }}" class="btn btn-primary-neon btn-sm mt-2"><i class="fas fa-rotate-left me-2"></i> Intake New Applicant</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Details Explainer Columns -->
+    <div class="col-lg-8">
+        <!-- AI Reasons Explanation (SHAP Contribution Analysis) -->
+        <div class="glass-card">
+            <h3 class="h5 font-weight-bold mb-3 border-bottom pb-2" style="border-color: var(--border-color) !important; color: var(--accent-cyan);">
+                <i class="fas fa-magnifying-glass-chart me-2"></i> Artificial Intelligence Decision Contributors
+            </h3>
+            <p class="text-muted small mb-4">
+                The neural network analyzed the applicant's parameters relative to general banking defaults. The primary contributing factors identified were:
+            </p>
+            
+            <div class="row g-4">
+                <!-- Positive Drivers -->
+                <div class="col-md-6">
+                    <h4 class="h6 font-weight-bold text-success mb-3"><i class="fas fa-circle-arrow-up me-2"></i> Top Favorable Drivers</h4>
+                    {% if explanation.positive %}
+                        <div class="d-flex flex-column gap-3">
+                            {% for factor in explanation.positive %}
+                                <div class="p-3 rounded" style="background-color: rgba(16, 185, 129, 0.08); border-left: 4px solid var(--success-color);">
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <span class="small font-weight-bold text-white">{{ factor.feature }}</span>
+                                        <span class="badge bg-success bg-opacity-25 text-success font-weight-bold" style="font-size: 0.7rem;">+{{ (factor.score * 100) | round(1) }}</span>
+                                    </div>
+                                    <div class="text-muted small">Declared: {{ factor.value }}</div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p class="text-muted small">No significant favorable drivers identified.</p>
+                    {% endif %}
+                </div>
+                
+                <!-- Negative Drivers -->
+                <div class="col-md-6">
+                    <h4 class="h6 font-weight-bold text-danger mb-3"><i class="fas fa-circle-arrow-down me-2"></i> Top Adverse Drivers</h4>
+                    {% if explanation.negative %}
+                        <div class="d-flex flex-column gap-3">
+                            {% for factor in explanation.negative %}
+                                <div class="p-3 rounded" style="background-color: rgba(239, 68, 68, 0.08); border-left: 4px solid var(--danger-color);">
+                                    <div class="d-flex justify-content-between align-items-center mb-1">
+                                        <span class="small font-weight-bold text-white">{{ factor.feature }}</span>
+                                        <span class="badge bg-danger bg-opacity-25 text-danger font-weight-bold" style="font-size: 0.7rem;">{{ (factor.score * 100) | round(1) }}</span>
+                                    </div>
+                                    <div class="text-muted small">Declared: {{ factor.value }}</div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p class="text-muted small">No significant adverse drivers identified.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+        <!-- Suggestions to Improve Approval Chances -->
+        <div class="glass-card">
+            <h3 class="h5 font-weight-bold mb-3 border-bottom pb-2" style="border-color: var(--border-color) !important; color: var(--accent-cyan);">
+                <i class="fas fa-hand-holding-dollar me-2"></i> Favorable Remediation Actions
+            </h3>
+            <p class="text-muted small mb-4">
+                Below are customized advisory suggestions targeted at addressing the adverse scoring factors and enhancing future eligibility ratings:
+            </p>
+            
+            {% if suggestions %}
+                <ul class="list-group list-group-flush bg-transparent">
+                    {% for suggestion in suggestions %}
+                        <li class="list-group-item bg-transparent text-white px-0 py-3 border-secondary border-opacity-20 d-flex align-items-start gap-3">
+                            <span class="text-primary mt-1"><i class="fas fa-circle-chevron-right"></i></span>
+                            <span class="small text-muted">{{ suggestion }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="text-muted small">No remediation suggestions required for this profile.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

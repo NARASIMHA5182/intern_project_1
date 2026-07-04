@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Manage Users | Vanguard Credit Services{% endblock %}
+{% block header_title %}Analyst Accounts Registry{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="glass-card">
+            <h3 class="h5 font-weight-bold mb-3"><i class="fas fa-users-cog me-2"></i> Corporate Accounts Directory</h3>
+            <p class="text-muted small mb-4">Under Basel III compliance guidelines, all risk assessments must carry the identity of a verified banking analyst. Below is the list of authorized corporate accounts:</p>
+            
+            <div class="table-responsive">
+                <table class="custom-table table-sm">
+                    <thead>
+                        <tr>
+                            <th>User ID</th>
+                            <th>Username</th>
+                            <th>Corporate Email</th>
+                            <th>System Role</th>
+                            <th>Date Created</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for u in users %}
+                        <tr>
+                            <td class="font-monospace text-muted">#VC-USR-{{ u.id }}</td>
+                            <td class="font-weight-bold text-white">{{ u.username }}</td>
+                            <td>{{ u.email }}</td>
+                            <td>
+                                <span class="badge {% if u.is_admin %}bg-primary{% else %}bg-secondary{% endif %} bg-opacity-25 {% if u.is_admin %}text-primary{% else %}text-muted{% endif %} font-weight-bold" style="font-size: 0.75rem;">
+                                    {{ 'ADMIN' if u.is_admin else 'ANALYST' }}
+                                </span>
+                            </td>
+                            <td>{{ u.created_at.strftime('%Y-%m-%d %H:%M:%S') if u.created_at else '' }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

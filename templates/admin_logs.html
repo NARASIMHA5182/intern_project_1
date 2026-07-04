@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}System Logs | Vanguard Credit Services{% endblock %}
+{% block header_title %}System Audit Logs{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="glass-card">
+            <h3 class="h5 font-weight-bold mb-3"><i class="fas fa-terminal me-2"></i> System Diagnostics Ledger</h3>
+            <p class="text-muted small mb-4">View diagnostic messages logged directly by the web server daemon, database connectors, and model trainers.</p>
+            
+            <div class="table-responsive">
+                <table class="custom-table table-sm">
+                    <thead>
+                        <tr>
+                            <th>Timestamp</th>
+                            <th>Severity Level</th>
+                            <th>Origin Module</th>
+                            <th>Log Message</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for l in logs %}
+                        <tr>
+                            <td class="font-monospace text-muted">{{ l.timestamp.strftime('%Y-%m-%d %H:%M:%S') if l.timestamp else '' }}</td>
+                            <td>
+                                <span class="badge {% if l.level == 'INFO' %}bg-info{% elif l.level == 'WARNING' %}bg-warning{% elif l.level == 'ERROR' %}bg-danger{% else %}bg-secondary{% endif %} bg-opacity-25 {% if l.level == 'INFO' %}text-info{% elif l.level == 'WARNING' %}text-warning{% elif l.level == 'ERROR' %}text-danger{% else %}text-white{% endif %} font-weight-bold" style="font-size: 0.75rem;">
+                                    {{ l.level }}
+                                </span>
+                            </td>
+                            <td class="font-monospace text-white">{{ l.module or 'root' }}</td>
+                            <td class="small">{{ l.message }}</td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="4" class="text-center text-muted py-4">No audit logs written.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

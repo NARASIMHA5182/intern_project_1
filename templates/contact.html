@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact Us | Vanguard Credit Services{% endblock %}
+{% block header_title %}Analyst Support Desk{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-6">
+        <div class="glass-card">
+            <div class="text-center mb-4">
+                <i class="fas fa-headset fs-1 text-primary mb-3"></i>
+                <h2 class="h4 font-weight-bold">System Inquiry Desk</h2>
+                <p class="text-muted small">Submit support tickets, model issues, or system requests.</p>
+            </div>
+            
+            <form method="POST" action="{{ url_for('main.contact') }}">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                
+                <div class="mb-3">
+                    <label for="name" class="form-label small font-weight-bold">Analyst Full Name</label>
+                    <input type="text" name="name" id="name" class="form-control" value="{% if current_user.is_authenticated %}{{ current_user.username }}{% endif %}" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="email" class="form-label small font-weight-bold">Direct Corporate Email</label>
+                    <input type="email" name="email" id="email" class="form-control" value="{% if current_user.is_authenticated %}{{ current_user.email }}{% endif %}" required>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="subject" class="form-label small font-weight-bold">Inquiry Subject</label>
+                    <select class="form-select" name="subject" id="subject" required>
+                        <option value="Model Recalibration" selected>Model Recalibration Request</option>
+                        <option value="Database Outage">Database Sync Inquiry</option>
+                        <option value="Access Rights">User Access Modification</option>
+                        <option value="General Bug">System Bug Report</option>
+                    </select>
+                </div>
+                
+                <div class="mb-4">
+                    <label for="message" class="form-label small font-weight-bold">Detailed Support Message</label>
+                    <textarea name="message" id="message" rows="4" class="form-control" placeholder="Provide complete logs or details related to the request..." required></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary-neon w-100 py-2">
+                    <i class="fas fa-paper-plane me-2"></i> Submit Inquiry Ticket
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

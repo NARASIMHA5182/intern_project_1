@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}Vanguard Credit | AI-Powered Credit Card Approval Prediction{% endblock %}
+{% block header_title %}Institutional Credit Portal{% endblock %}
+
+{% block content %}
+<div class="row align-items-center justify-content-center min-vh-75 py-5">
+    <div class="col-lg-8 text-center">
+        <h1 class="display-4 font-weight-bold mb-3" style="background: linear-gradient(135deg, #ffffff 30%, var(--accent-cyan)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            Next-Gen AI Credit Card Approval Engine
+        </h1>
+        <p class="lead text-muted mb-5">
+            Empowering financial institutions with advanced risk analytics, explainable deep-learning predictions, and instant credit decisions complying with modern banking standards.
+        </p>
+        
+        <div class="d-flex justify-content-center gap-3 mb-5">
+            <a href="{{ url_for('auth.login') }}" class="btn btn-primary-neon btn-lg px-4 py-3">
+                <i class="fas fa-sign-in-alt me-2"></i> Banker Login Portal
+            </a>
+            <a href="{{ url_for('auth.register') }}" class="btn btn-outline-secondary btn-lg px-4 py-3 text-white border-secondary">
+                <i class="fas fa-user-plus me-2"></i> Register Account
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-4">
+        <div class="glass-card h-100">
+            <div class="fs-1 text-primary mb-3"><i class="fas fa-microchip"></i></div>
+            <h3 class="h5 font-weight-bold mb-2">Multi-Model Ensembles</h3>
+            <p class="text-muted small">
+                Compares 9 baseline classification models (logistic, trees, boosting, and bagging ensembles) to deliver high accuracy and recall.
+            </p>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="glass-card h-100">
+            <div class="fs-1 text-success mb-3"><i class="fas fa-glasses"></i></div>
+            <h3 class="h5 font-weight-bold mb-2">Explainable Predictions</h3>
+            <p class="text-muted small">
+                Offers local contribution analyzer (SHAP-style) diagrams identifying core factors boosting or lowering applicant scoring.
+            </p>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="glass-card h-100">
+            <div class="fs-1 text-warning mb-3"><i class="fas fa-file-invoice-dollar"></i></div>
+            <h3 class="h5 font-weight-bold mb-2">Basel Audit Trail</h3>
+            <p class="text-muted small">
+                Records full decision variables to DB logs, allowing instant export of PDF auditing logs and Excel spreadsheets.
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

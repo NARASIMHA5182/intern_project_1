@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}404 Not Found | Vanguard Credit Services{% endblock %}
+{% block header_title %}Route Not Found{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center align-items-center min-vh-70 py-5">
+    <div class="col-md-6 text-center">
+        <div class="glass-card py-5">
+            <div class="fs-1 text-warning mb-4"><i class="fas fa-triangle-exclamation"></i></div>
+            <h2 class="h3 font-weight-bold text-white mb-2">404 - Page Not Found</h2>
+            <p class="text-muted small mb-4">
+                The banking link you requested could not be resolved on this host server.
+            </p>
+            <a href="{{ url_for('main.home') }}" class="btn btn-primary-neon btn-sm">
+                <i class="fas fa-home me-2"></i> Return to Portal Home
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %}User Profile | Vanguard Credit Services{% endblock %}
+{% block header_title %}Analyst Security Profile{% endblock %}
+
+{% block content %}
+<div class="row">
+    <!-- Stats Summary Card Column -->
+    <div class="col-lg-4 mb-4">
+        <div class="glass-card text-center py-5">
+            <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center text-white font-weight-bold mx-auto mb-3" style="width: 80px; height: 80px; font-size: 2rem;">
+                {{ current_user.username[0].upper() }}
+            </div>
+            
+            <h2 class="h4 font-weight-bold text-white mb-1">{{ current_user.username }}</h2>
+            <span class="badge bg-primary bg-opacity-25 text-primary border border-primary border-opacity-50 px-3 py-1">{{ current_user.role | upper }}</span>
+            <p class="text-muted small mt-2">Member Since: {{ current_user.created_at.strftime('%Y-%m-%d') }}</p>
+            
+            <div class="row mt-4 pt-4 border-top" style="border-color: var(--border-color) !important;">
+                <div class="col-4 border-end" style="border-color: var(--border-color) !important;">
+                    <div class="text-muted small">Total Runs</div>
+                    <div class="fs-5 font-weight-bold text-white">{{ stats.total }}</div>
+                </div>
+                <div class="col-4 border-end" style="border-color: var(--border-color) !important;">
+                    <div class="text-muted small">Approved</div>
+                    <div class="fs-5 font-weight-bold text-success">{{ stats.approved }}</div>
+                </div>
+                <div class="col-4">
+                    <div class="text-muted small">Rejected</div>
+                    <div class="fs-5 font-weight-bold text-danger">{{ stats.rejected }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Profile Card Column -->
+    <div class="col-lg-8">
+        <div class="glass-card">
+            <h3 class="h5 font-weight-bold mb-3 border-bottom pb-2" style="border-color: var(--border-color) !important; color: var(--accent-cyan);">
+                <i class="fas fa-user-shield me-2"></i> Update Security Credentials
+            </h3>
+            
+            <form method="POST" action="{{ url_for('main.profile') }}">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="username" class="form-label small font-weight-bold">Username</label>
+                        <input type="text" name="username" id="username" class="form-control" value="{{ current_user.username }}" required>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <label for="email" class="form-label small font-weight-bold">Email Address</label>
+                        <input type="email" name="email" id="email" class="form-control" value="{{ current_user.email }}" required>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <label for="new_password" class="form-label small font-weight-bold">New Password (leave blank to keep unchanged)</label>
+                        <input type="password" name="new_password" id="new_password" class="form-control" placeholder="Minimum 8 characters">
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <label for="current_password" class="form-label small font-weight-bold text-danger">Current Password (required for any updates)</label>
+                        <input type="password" name="current_password" id="current_password" class="form-control" placeholder="Enter current password to verify" required>
+                    </div>
+                    
+                    <div class="col-12 mt-4 text-end">
+                        <button type="submit" class="btn btn-primary-neon px-4 py-2">
+                            <i class="fas fa-save me-2"></i> Save Changes
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,1024 @@
+[2026-07-03 19:04:34,736] WARNING in trainer: XGBoost is not installed. Skipping XGBoost in model comparison.
+[2026-07-03 19:04:34,738] WARNING in trainer: LightGBM is not installed. Skipping LightGBM in model comparison.
+[2026-07-03 19:04:34,738] WARNING in trainer: CatBoost is not installed. Skipping CatBoost in model comparison.
+[2026-07-03 19:04:34,748] INFO in data_loader: Generating synthetic credit dataset with 2000 records...
+[2026-07-03 19:04:35,020] INFO in data_loader: Dataset generated and saved successfully to D:\intern_project\dataset\credit_card_data.csv
+[2026-07-03 19:04:35,040] INFO in cleaner: Fitting DataCleaner on data...
+[2026-07-03 19:04:35,117] INFO in transformer: Fitting DataTransformer...
+[2026-07-03 19:04:35,206] INFO in transformer: Imbalance detected. Balancing dataset by oversampling minority class (162 instances)...
+[2026-07-03 19:04:35,210] INFO in trainer: Starting model training and comparison...
+[2026-07-03 19:04:35,210] INFO in trainer: Tuning and training Logistic Regression...
+[2026-07-03 19:04:38,309] INFO in trainer: Model: Logistic Regression | Best Grid CV AUC: 0.9917 | Test AUC: 0.9919 | Test Acc: 0.9450
+[2026-07-03 19:04:38,309] INFO in trainer: Tuning and training Decision Tree...
+[2026-07-03 19:04:40,098] INFO in trainer: Model: Decision Tree | Best Grid CV AUC: 0.9612 | Test AUC: 0.9326 | Test Acc: 0.9150
+[2026-07-03 19:04:40,098] INFO in trainer: Tuning and training Random Forest...
+[2026-07-03 19:04:40,919] INFO in trainer: Model: Random Forest | Best Grid CV AUC: 0.9917 | Test AUC: 0.9822 | Test Acc: 0.9175
+[2026-07-03 19:04:40,919] INFO in trainer: Tuning and training Gradient Boosting...
+[2026-07-03 19:04:42,298] INFO in trainer: Model: Gradient Boosting | Best Grid CV AUC: 0.9913 | Test AUC: 0.9908 | Test Acc: 0.9375
+[2026-07-03 19:04:42,298] INFO in trainer: Tuning and training AdaBoost...
+[2026-07-03 19:04:43,250] INFO in trainer: Model: AdaBoost | Best Grid CV AUC: 0.9925 | Test AUC: 0.9903 | Test Acc: 0.9450
+[2026-07-03 19:04:43,250] INFO in trainer: Tuning and training Extra Trees...
+[2026-07-03 19:04:44,048] INFO in trainer: Model: Extra Trees | Best Grid CV AUC: 0.9866 | Test AUC: 0.9760 | Test Acc: 0.9150
+[2026-07-03 19:04:44,048] INFO in trainer: *** Best Model Selected: Logistic Regression with Test AUC: 0.9919 ***
+[2026-07-03 19:04:44,048] INFO in trainer: Saving trained pipeline assets to models directory...
+[2026-07-03 19:04:44,059] INFO in trainer: Pipeline assets successfully serialized.
+[2026-07-03 19:05:08,672] WARNING in trainer: XGBoost is not installed. Skipping XGBoost in model comparison.
+[2026-07-03 19:05:08,673] WARNING in trainer: LightGBM is not installed. Skipping LightGBM in model comparison.
+[2026-07-03 19:05:08,673] WARNING in trainer: CatBoost is not installed. Skipping CatBoost in model comparison.
+[2026-07-03 19:05:08,690] INFO in cleaner: Fitting DataCleaner on data...
+[2026-07-03 19:05:08,727] INFO in transformer: Fitting DataTransformer...
+[2026-07-03 19:05:08,758] INFO in transformer: Imbalance detected. Balancing dataset by oversampling minority class (162 instances)...
+[2026-07-03 19:05:08,761] INFO in trainer: Starting model training and comparison...
+[2026-07-03 19:05:08,761] INFO in trainer: Tuning and training Logistic Regression...
+[2026-07-03 19:05:11,718] INFO in trainer: Model: Logistic Regression | Best Grid CV AUC: 0.9917 | Test AUC: 0.9919 | Test Acc: 0.9450
+[2026-07-03 19:05:11,718] INFO in trainer: Tuning and training Decision Tree...
+[2026-07-03 19:05:13,452] INFO in trainer: Model: Decision Tree | Best Grid CV AUC: 0.9612 | Test AUC: 0.9326 | Test Acc: 0.9150
+[2026-07-03 19:05:13,452] INFO in trainer: Tuning and training Random Forest...
+[2026-07-03 19:05:14,304] INFO in trainer: Model: Random Forest | Best Grid CV AUC: 0.9917 | Test AUC: 0.9822 | Test Acc: 0.9175
+[2026-07-03 19:05:14,304] INFO in trainer: Tuning and training Gradient Boosting...
+[2026-07-03 19:05:15,740] INFO in trainer: Model: Gradient Boosting | Best Grid CV AUC: 0.9913 | Test AUC: 0.9908 | Test Acc: 0.9375
+[2026-07-03 19:05:15,740] INFO in trainer: Tuning and training AdaBoost...
+[2026-07-03 19:05:16,828] INFO in trainer: Model: AdaBoost | Best Grid CV AUC: 0.9925 | Test AUC: 0.9903 | Test Acc: 0.9450
+[2026-07-03 19:05:16,829] INFO in trainer: Tuning and training Extra Trees...
+[2026-07-03 19:05:17,469] INFO in trainer: Model: Extra Trees | Best Grid CV AUC: 0.9866 | Test AUC: 0.9760 | Test Acc: 0.9150
+[2026-07-03 19:05:17,470] INFO in trainer: *** Best Model Selected: Logistic Regression with Test AUC: 0.9919 ***
+[2026-07-03 19:05:17,470] INFO in trainer: Saving trained pipeline assets to models directory...
+[2026-07-03 19:05:17,480] INFO in trainer: Pipeline assets successfully serialized.
+[2026-07-03 19:05:17,483] INFO in evaluator: Evaluating model performance...
+[2026-07-03 19:05:17,802] INFO in evaluator: Saved confusion matrix plot to D:\intern_project\static\images\confusion_matrix.png
+[2026-07-03 19:05:18,231] INFO in evaluator: Saved ROC curve plot to D:\intern_project\static\images\roc_curve.png
+[2026-07-03 19:05:48,709] WARNING in trainer: XGBoost is not installed. Skipping XGBoost in model comparison.
+[2026-07-03 19:05:48,709] WARNING in trainer: LightGBM is not installed. Skipping LightGBM in model comparison.
+[2026-07-03 19:05:48,710] WARNING in trainer: CatBoost is not installed. Skipping CatBoost in model comparison.
+[2026-07-03 19:05:48,720] INFO in cleaner: Fitting DataCleaner on data...
+[2026-07-03 19:05:48,749] INFO in transformer: Fitting DataTransformer...
+[2026-07-03 19:05:48,801] INFO in transformer: Imbalance detected. Balancing dataset by oversampling minority class (162 instances)...
+[2026-07-03 19:05:48,805] INFO in trainer: Starting model training and comparison...
+[2026-07-03 19:05:48,805] INFO in trainer: Tuning and training Logistic Regression...
+[2026-07-03 19:05:51,787] INFO in trainer: Model: Logistic Regression | Best Grid CV AUC: 0.9917 | Test AUC: 0.9919 | Test Acc: 0.9450
+[2026-07-03 19:05:51,787] INFO in trainer: Tuning and training Decision Tree...
+[2026-07-03 19:05:53,561] INFO in trainer: Model: Decision Tree | Best Grid CV AUC: 0.9612 | Test AUC: 0.9326 | Test Acc: 0.9150
+[2026-07-03 19:05:53,561] INFO in trainer: Tuning and training Random Forest...
+[2026-07-03 19:05:54,441] INFO in trainer: Model: Random Forest | Best Grid CV AUC: 0.9917 | Test AUC: 0.9822 | Test Acc: 0.9175
+[2026-07-03 19:05:54,441] INFO in trainer: Tuning and training Gradient Boosting...
+[2026-07-03 19:05:55,893] INFO in trainer: Model: Gradient Boosting | Best Grid CV AUC: 0.9913 | Test AUC: 0.9908 | Test Acc: 0.9375
+[2026-07-03 19:05:55,893] INFO in trainer: Tuning and training AdaBoost...
+[2026-07-03 19:05:56,867] INFO in trainer: Model: AdaBoost | Best Grid CV AUC: 0.9925 | Test AUC: 0.9903 | Test Acc: 0.9450
+[2026-07-03 19:05:56,867] INFO in trainer: Tuning and training Extra Trees...
+[2026-07-03 19:05:57,587] INFO in trainer: Model: Extra Trees | Best Grid CV AUC: 0.9866 | Test AUC: 0.9760 | Test Acc: 0.9150
+[2026-07-03 19:05:57,587] INFO in trainer: *** Best Model Selected: Logistic Regression with Test AUC: 0.9919 ***
+[2026-07-03 19:05:57,587] INFO in trainer: Saving trained pipeline assets to models directory...
+[2026-07-03 19:05:57,593] INFO in trainer: Pipeline assets successfully serialized.
+[2026-07-03 19:05:57,594] INFO in evaluator: Evaluating model performance...
+[2026-07-03 19:05:57,820] INFO in evaluator: Saved confusion matrix plot to D:\intern_project\static\images\confusion_matrix.png
+[2026-07-03 19:05:58,067] INFO in evaluator: Saved ROC curve plot to D:\intern_project\static\images\roc_curve.png
+[2026-07-03 19:05:58,553] INFO in evaluator: Saved feature importance plot to D:\intern_project\static\images\feature_importance.png
+[2026-07-03 19:05:58,553] INFO in evaluator: Model evaluation complete. AUC: 0.9919 | Accuracy: 0.9450
+[2026-07-03 19:05:58,554] INFO in evaluator: Evaluation metrics serialized.
+[2026-07-03 19:06:52,717] INFO in db_helper: Default admin account created: admin / AdminPassword123
+[2026-07-03 19:06:53,008] INFO in db_helper: Default demo user account created: demo / DemoPassword123
+[2026-07-03 19:06:53,011] INFO in db_helper: Database initialized successfully.
+[2026-07-03 19:06:53,988] INFO in db_helper: Database initialized successfully.
+[2026-07-03 19:06:54,732] INFO in db_helper: Database initialized successfully.
+[2026-07-03 19:06:55,420] INFO in db_helper: Database initialized successfully.
+[2026-07-03 19:06:56,089] INFO in db_helper: Database initialized successfully.
+[2026-07-03 19:06:56,763] INFO in db_helper: Database initialized successfully.
+[2026-07-03 19:06:57,408] INFO in db_helper: Database initialized successfully.
+[2026-07-03 19:06:58,140] INFO in db_helper: Database initialized successfully.
+[2026-07-03 19:06:58,837] INFO in db_helper: Database initialized successfully.
+[2026-07-03 19:07:47,691] INFO in db_helper: Database initialized successfully.
+[2026-07-03 19:07:48,758] INFO in db_helper: Database initialized successfully.
+[2026-07-03 19:07:49,458] INFO in cleaner: Fitting DataCleaner on data...
+[2026-07-03 19:07:49,465] INFO in cleaner: Removing 1 duplicate rows.
+[2026-07-03 19:07:49,504] INFO in db_helper: Database initialized successfully.
+[2026-07-03 19:07:50,240] INFO in db_helper: Database initialized successfully.
+[2026-07-03 19:07:50,935] INFO in db_helper: Database initialized successfully.
+[2026-07-03 19:07:51,647] INFO in db_helper: Database initialized successfully.
+[2026-07-03 19:07:52,321] INFO in db_helper: Database initialized successfully.
+[2026-07-03 19:07:53,067] INFO in db_helper: Database initialized successfully.
+[2026-07-03 19:07:53,741] INFO in db_helper: Database initialized successfully.
+[2026-07-03 19:08:31,239] INFO in db_helper: Database initialized successfully.
+[2026-07-03 19:08:32,218] INFO in db_helper: Database initialized successfully.
+[2026-07-03 19:08:32,295] INFO in db_helper: Database initialized successfully.
+[2026-07-03 19:08:32,327] INFO in db_helper: Database initialized successfully.
+[2026-07-03 19:08:32,345] INFO in db_helper: Database initialized successfully.
+[2026-07-03 19:08:32,366] INFO in db_helper: Database initialized successfully.
+[2026-07-03 19:08:32,397] INFO in db_helper: Database initialized successfully.
+[2026-07-03 19:08:32,426] INFO in db_helper: Database initialized successfully.
+[2026-07-03 19:08:32,455] INFO in db_helper: Database initialized successfully.
+[2026-07-03 19:08:56,605] INFO in db_helper: Database initialized successfully.
+[2026-07-03 19:08:57,765] INFO in db_helper: Database initialized successfully.
+[2026-07-03 19:08:58,450] INFO in db_helper: Database initialized successfully.
+[2026-07-03 19:08:59,104] INFO in db_helper: Database initialized successfully.
+[2026-07-03 19:08:59,776] INFO in db_helper: Database initialized successfully.
+[2026-07-03 19:09:00,403] INFO in db_helper: Database initialized successfully.
+[2026-07-03 19:09:01,076] INFO in db_helper: Database initialized successfully.
+[2026-07-03 19:09:01,705] INFO in db_helper: Database initialized successfully.
+[2026-07-03 19:09:02,312] INFO in db_helper: Database initialized successfully.
+[2026-07-03 19:42:18,872] INFO in db_helper: Database initialized successfully.
+[2026-07-03 19:42:20,464] INFO in db_helper: Database initialized successfully.
+[2026-07-03 19:42:21,086] INFO in cleaner: Fitting DataCleaner on data...
+[2026-07-03 19:42:21,090] INFO in cleaner: Removing 4 duplicate rows.
+[2026-07-03 19:42:21,688] INFO in transformer: Fitting DataTransformer...
+[2026-07-03 19:42:23,292] WARNING in auth_routes: Failed login attempt for testanalyst from IP 127.0.0.1.
+[2026-07-03 19:42:24,221] INFO in auth_routes: User testanalyst logged in successfully from IP 127.0.0.1.
+[2026-07-03 19:42:24,968] WARNING in trainer: XGBoost is not installed. Skipping XGBoost in model comparison.
+[2026-07-03 19:42:24,968] WARNING in trainer: LightGBM is not installed. Skipping LightGBM in model comparison.
+[2026-07-03 19:42:24,968] WARNING in trainer: CatBoost is not installed. Skipping CatBoost in model comparison.
+[2026-07-03 19:42:24,985] INFO in cleaner: Fitting DataCleaner on data...
+[2026-07-03 19:42:25,025] INFO in transformer: Fitting DataTransformer...
+[2026-07-03 19:42:25,045] INFO in transformer: Imbalance detected. Balancing dataset by oversampling minority class (162 instances)...
+[2026-07-03 19:42:25,049] INFO in trainer: Starting model training and comparison...
+[2026-07-03 19:42:25,050] INFO in trainer: Tuning and training Logistic Regression...
+[2026-07-03 19:42:28,641] INFO in trainer: Model: Logistic Regression | Best Grid CV AUC: 0.9917 | Test AUC: 0.9919 | Test Acc: 0.9450
+[2026-07-03 19:42:28,641] INFO in trainer: Tuning and training Decision Tree...
+[2026-07-03 19:42:30,528] INFO in trainer: Model: Decision Tree | Best Grid CV AUC: 0.9612 | Test AUC: 0.9326 | Test Acc: 0.9150
+[2026-07-03 19:42:30,528] INFO in trainer: Tuning and training Random Forest...
+[2026-07-03 19:42:31,425] INFO in trainer: Model: Random Forest | Best Grid CV AUC: 0.9917 | Test AUC: 0.9822 | Test Acc: 0.9175
+[2026-07-03 19:42:31,425] INFO in trainer: Tuning and training Gradient Boosting...
+[2026-07-03 19:42:32,864] INFO in trainer: Model: Gradient Boosting | Best Grid CV AUC: 0.9913 | Test AUC: 0.9908 | Test Acc: 0.9375
+[2026-07-03 19:42:32,864] INFO in trainer: Tuning and training AdaBoost...
+[2026-07-03 19:42:33,907] INFO in trainer: Model: AdaBoost | Best Grid CV AUC: 0.9925 | Test AUC: 0.9903 | Test Acc: 0.9450
+[2026-07-03 19:42:33,907] INFO in trainer: Tuning and training Extra Trees...
+[2026-07-03 19:42:34,648] INFO in trainer: Model: Extra Trees | Best Grid CV AUC: 0.9866 | Test AUC: 0.9760 | Test Acc: 0.9150
+[2026-07-03 19:42:34,648] INFO in trainer: *** Best Model Selected: Logistic Regression with Test AUC: 0.9919 ***
+[2026-07-03 19:42:34,648] INFO in trainer: Saving trained pipeline assets to models directory...
+[2026-07-03 19:42:34,657] INFO in trainer: Pipeline assets successfully serialized.
+[2026-07-03 19:42:34,709] INFO in predict_routes: Prediction generated successfully for testanalyst. ID: 1
+[2026-07-03 22:12:41,313] INFO in data_loader: Generating synthetic credit dataset with 2000 records...
+[2026-07-03 22:12:41,605] INFO in data_loader: Dataset generated and saved successfully to d:\intern_project\dataset\credit_card_data.csv
+[2026-07-03 22:12:49,931] INFO in data_loader: Generating synthetic credit dataset with 2000 records...
+[2026-07-03 22:12:50,180] INFO in data_loader: Dataset generated and saved successfully to D:\intern_project\dataset\credit_card_data.csv
+[2026-07-03 22:53:53,093] INFO in db_helper: Default admin account created: admin / AdminPassword123
+[2026-07-03 22:53:53,294] INFO in db_helper: Default demo user account created: demo / DemoPassword123
+[2026-07-03 22:53:53,338] INFO in db_helper: Database initialized successfully.
+[2026-07-03 22:53:53,347] INFO in app: Starting Flask application server...
+[2026-07-03 22:54:39,866] INFO in app: 404 Not Found trigger: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2026-07-03 22:55:32,032] WARNING in auth_routes: Failed login attempt for admin from IP 127.0.0.1.
+[2026-07-03 22:56:40,444] INFO in auth_routes: User admin logged in successfully from IP 127.0.0.1.
+[2026-07-03 22:56:40,489] ERROR in app: 500 Internal Server Error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+Traceback (most recent call last):
+  File "D:\intern_project\.venv\Lib\site-packages\sqlalchemy\sql\base.py", line 2288, in _entity_namespace_key
+    return getattr(ns, key)  # type: ignore
+AttributeError: type object 'Prediction' has no attribute 'approval_status'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\intern_project\.venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\intern_project\routes\admin_routes.py", line 21, in decorated_function
+    return f(*args, **kwargs)
+  File "D:\intern_project\routes\admin_routes.py", line 31, in dashboard
+    approved_count = Prediction.query.filter_by(approval_status='Approved').count()
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\intern_project\.venv\Lib\site-packages\sqlalchemy\orm\query.py", line 1993, in filter_by
+    _entity_namespace_key(from_entity, key) == value
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "D:\intern_project\.venv\Lib\site-packages\sqlalchemy\sql\base.py", line 2290, in _entity_namespace_key
+    raise exc.InvalidRequestError(
+        'Entity namespace for "%s" has no property "%s"' % (entity, key)
+    ) from err
+sqlalchemy.exc.InvalidRequestError: Entity namespace for "predictions" has no property "approval_status"
+[2026-07-03 22:57:36,902] ERROR in app: 500 Internal Server Error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+Traceback (most recent call last):
+  File "D:\intern_project\.venv\Lib\site-packages\sqlalchemy\sql\base.py", line 2288, in _entity_namespace_key
+    return getattr(ns, key)  # type: ignore
+AttributeError: type object 'Prediction' has no attribute 'approval_status'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\intern_project\.venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\intern_project\routes\admin_routes.py", line 21, in decorated_function
+    return f(*args, **kwargs)
+  File "D:\intern_project\routes\admin_routes.py", line 31, in dashboard
+    approved_count = Prediction.query.filter_by(approval_status='Approved').count()
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\intern_project\.venv\Lib\site-packages\sqlalchemy\orm\query.py", line 1993, in filter_by
+    _entity_namespace_key(from_entity, key) == value
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "D:\intern_project\.venv\Lib\site-packages\sqlalchemy\sql\base.py", line 2290, in _entity_namespace_key
+    raise exc.InvalidRequestError(
+        'Entity namespace for "%s" has no property "%s"' % (entity, key)
+    ) from err
+sqlalchemy.exc.InvalidRequestError: Entity namespace for "predictions" has no property "approval_status"
+[2026-07-03 22:57:57,344] ERROR in app: 500 Internal Server Error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+Traceback (most recent call last):
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\intern_project\routes\main_routes.py", line 21, in about
+    return render_template('about.html')
+  File "D:\intern_project\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "D:\intern_project\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "D:\intern_project\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\intern_project\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\intern_project\templates\about.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "D:\intern_project\templates\base.html", line 42, in top-level template code
+    <a href="{{ url_for('predict.batch_predict') }}" class="nav-item {% if request.path == url_for('predict.batch_predict') %}active{% endif %}">
+    ^^^^^
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+        endpoint,
+    ...<3 lines>...
+        force_external=_external,
+    )
+  File "D:\intern_project\.venv\Lib\site-packages\werkzeug\routing\map.py", line 901, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'predict.batch_predict'. Did you mean 'predict.api_predict' instead?
+[2026-07-03 23:02:20,805] INFO in db_helper: Database initialized successfully.
+[2026-07-03 23:02:20,818] INFO in app: Starting Flask application server...
+[2026-07-03 23:04:41,558] ERROR in app: 500 Internal Server Error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+Traceback (most recent call last):
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\intern_project\.venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\intern_project\routes\admin_routes.py", line 22, in decorated_function
+    return f(*args, **kwargs)
+  File "D:\intern_project\routes\admin_routes.py", line 71, in dashboard
+    return render_template('dashboard.html', stats=stats, recent_predictions=recent_predictions, recent_logins=recent_logins)
+  File "D:\intern_project\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "D:\intern_project\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "D:\intern_project\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\intern_project\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\intern_project\templates\dashboard.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "D:\intern_project\templates\base.html", line 146, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^
+  File "D:\intern_project\templates\dashboard.html", line 71, in block 'content'
+    <a href="{{ url_for('predict.export_excel') }}" class="btn btn-outline-secondary btn-sm text-white border-secondary"><i class="fas fa-file-excel text-success me-1"></i> Excel</a>
+    ^^^^^
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+        endpoint,
+    ...<3 lines>...
+        force_external=_external,
+    )
+  File "D:\intern_project\.venv\Lib\site-packages\werkzeug\routing\map.py", line 901, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'predict.export_excel'. Did you mean 'predict.api_predict' instead?
+[2026-07-03 23:04:45,924] ERROR in app: 500 Internal Server Error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+Traceback (most recent call last):
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\intern_project\.venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\intern_project\routes\admin_routes.py", line 22, in decorated_function
+    return f(*args, **kwargs)
+  File "D:\intern_project\routes\admin_routes.py", line 71, in dashboard
+    return render_template('dashboard.html', stats=stats, recent_predictions=recent_predictions, recent_logins=recent_logins)
+  File "D:\intern_project\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "D:\intern_project\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "D:\intern_project\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\intern_project\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\intern_project\templates\dashboard.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "D:\intern_project\templates\base.html", line 146, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^
+  File "D:\intern_project\templates\dashboard.html", line 71, in block 'content'
+    <a href="{{ url_for('predict.export_excel') }}" class="btn btn-outline-secondary btn-sm text-white border-secondary"><i class="fas fa-file-excel text-success me-1"></i> Excel</a>
+    ^^^^^
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+        endpoint,
+    ...<3 lines>...
+        force_external=_external,
+    )
+  File "D:\intern_project\.venv\Lib\site-packages\werkzeug\routing\map.py", line 901, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'predict.export_excel'. Did you mean 'predict.api_predict' instead?
+[2026-07-03 23:04:47,244] ERROR in app: 500 Internal Server Error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+Traceback (most recent call last):
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\intern_project\.venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\intern_project\routes\admin_routes.py", line 22, in decorated_function
+    return f(*args, **kwargs)
+  File "D:\intern_project\routes\admin_routes.py", line 71, in dashboard
+    return render_template('dashboard.html', stats=stats, recent_predictions=recent_predictions, recent_logins=recent_logins)
+  File "D:\intern_project\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "D:\intern_project\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "D:\intern_project\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\intern_project\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\intern_project\templates\dashboard.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "D:\intern_project\templates\base.html", line 146, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^
+  File "D:\intern_project\templates\dashboard.html", line 71, in block 'content'
+    <a href="{{ url_for('predict.export_excel') }}" class="btn btn-outline-secondary btn-sm text-white border-secondary"><i class="fas fa-file-excel text-success me-1"></i> Excel</a>
+    ^^^^^
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+        endpoint,
+    ...<3 lines>...
+        force_external=_external,
+    )
+  File "D:\intern_project\.venv\Lib\site-packages\werkzeug\routing\map.py", line 901, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'predict.export_excel'. Did you mean 'predict.api_predict' instead?
+[2026-07-03 23:24:14,966] INFO in db_helper: Database initialized successfully.
+[2026-07-03 23:24:14,977] INFO in app: Starting Flask application server...
+[2026-07-03 23:25:48,133] INFO in app: 404 Not Found trigger: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2026-07-03 23:26:21,589] INFO in auth_routes: User admin logged in successfully from IP 127.0.0.1.
+[2026-07-03 23:27:34,276] ERROR in app: 500 Internal Server Error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+Traceback (most recent call last):
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\intern_project\.venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\intern_project\routes\admin_routes.py", line 22, in decorated_function
+    return f(*args, **kwargs)
+  File "D:\intern_project\routes\admin_routes.py", line 107, in manage_users
+    return render_template('admin_users.html', users=users_list)
+  File "D:\intern_project\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "D:\intern_project\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "D:\intern_project\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\intern_project\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\intern_project\templates\admin_users.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "D:\intern_project\templates\base.html", line 146, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^
+  File "D:\intern_project\templates\admin_users.html", line 32, in block 'content'
+    {{ u.role.upper() }}
+    
+  File "D:\intern_project\.venv\Lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'database.models.User object' has no attribute 'role'
+[2026-07-03 23:28:23,625] ERROR in app: 500 Internal Server Error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+Traceback (most recent call last):
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\intern_project\.venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\intern_project\routes\admin_routes.py", line 22, in decorated_function
+    return f(*args, **kwargs)
+  File "D:\intern_project\routes\admin_routes.py", line 107, in manage_users
+    return render_template('admin_users.html', users=users_list)
+  File "D:\intern_project\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "D:\intern_project\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "D:\intern_project\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\intern_project\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\intern_project\templates\admin_users.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "D:\intern_project\templates\base.html", line 146, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^
+  File "D:\intern_project\templates\admin_users.html", line 32, in block 'content'
+    {{ u.role.upper() }}
+    
+  File "D:\intern_project\.venv\Lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'database.models.User object' has no attribute 'role'
+[2026-07-03 23:29:39,136] ERROR in app: 500 Internal Server Error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+Traceback (most recent call last):
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\intern_project\.venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\intern_project\routes\admin_routes.py", line 22, in decorated_function
+    return f(*args, **kwargs)
+  File "D:\intern_project\routes\admin_routes.py", line 107, in manage_users
+    return render_template('admin_users.html', users=users_list)
+  File "D:\intern_project\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "D:\intern_project\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "D:\intern_project\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\intern_project\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\intern_project\templates\admin_users.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "D:\intern_project\templates\base.html", line 146, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^
+  File "D:\intern_project\templates\admin_users.html", line 32, in block 'content'
+    {{ 'ADMIN' if u.is_admin else 'ANALYST' }}
+    
+  File "D:\intern_project\.venv\Lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'database.models.User object' has no attribute 'role'
+[2026-07-03 23:29:46,185] ERROR in app: 500 Internal Server Error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+Traceback (most recent call last):
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\intern_project\.venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\intern_project\routes\admin_routes.py", line 22, in decorated_function
+    return f(*args, **kwargs)
+  File "D:\intern_project\routes\admin_routes.py", line 107, in manage_users
+    return render_template('admin_users.html', users=users_list)
+  File "D:\intern_project\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "D:\intern_project\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "D:\intern_project\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\intern_project\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\intern_project\templates\admin_users.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "D:\intern_project\templates\base.html", line 146, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^
+  File "D:\intern_project\templates\admin_users.html", line 32, in block 'content'
+    {{ 'ADMIN' if u.is_admin else 'ANALYST' }}
+    
+  File "D:\intern_project\.venv\Lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'database.models.User object' has no attribute 'role'
+[2026-07-03 23:29:47,796] ERROR in app: 500 Internal Server Error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+Traceback (most recent call last):
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\intern_project\.venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\intern_project\routes\admin_routes.py", line 22, in decorated_function
+    return f(*args, **kwargs)
+  File "D:\intern_project\routes\admin_routes.py", line 107, in manage_users
+    return render_template('admin_users.html', users=users_list)
+  File "D:\intern_project\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "D:\intern_project\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "D:\intern_project\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\intern_project\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\intern_project\templates\admin_users.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "D:\intern_project\templates\base.html", line 146, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^
+  File "D:\intern_project\templates\admin_users.html", line 32, in block 'content'
+    {{ 'ADMIN' if u.is_admin else 'ANALYST' }}
+    
+  File "D:\intern_project\.venv\Lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'database.models.User object' has no attribute 'role'
+[2026-07-03 23:29:49,609] ERROR in app: 500 Internal Server Error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+Traceback (most recent call last):
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\intern_project\.venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\intern_project\routes\admin_routes.py", line 22, in decorated_function
+    return f(*args, **kwargs)
+  File "D:\intern_project\routes\admin_routes.py", line 107, in manage_users
+    return render_template('admin_users.html', users=users_list)
+  File "D:\intern_project\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "D:\intern_project\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "D:\intern_project\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\intern_project\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\intern_project\templates\admin_users.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "D:\intern_project\templates\base.html", line 146, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^
+  File "D:\intern_project\templates\admin_users.html", line 32, in block 'content'
+    {{ 'ADMIN' if u.is_admin else 'ANALYST' }}
+    
+  File "D:\intern_project\.venv\Lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'database.models.User object' has no attribute 'role'
+[2026-07-03 23:30:15,999] INFO in app: 404 Not Found trigger: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2026-07-03 23:30:19,090] INFO in auth_routes: User admin logged in successfully from IP 127.0.0.1.
+[2026-07-03 23:30:22,670] ERROR in app: 500 Internal Server Error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+Traceback (most recent call last):
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\intern_project\.venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\intern_project\routes\admin_routes.py", line 22, in decorated_function
+    return f(*args, **kwargs)
+  File "D:\intern_project\routes\admin_routes.py", line 107, in manage_users
+    return render_template('admin_users.html', users=users_list)
+  File "D:\intern_project\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "D:\intern_project\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "D:\intern_project\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\intern_project\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\intern_project\templates\admin_users.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "D:\intern_project\templates\base.html", line 146, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^
+  File "D:\intern_project\templates\admin_users.html", line 32, in block 'content'
+    {{ 'ADMIN' if u.is_admin else 'ANALYST' }}
+    
+  File "D:\intern_project\.venv\Lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'database.models.User object' has no attribute 'role'
+[2026-07-03 23:36:12,989] ERROR in app: 500 Internal Server Error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+Traceback (most recent call last):
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\intern_project\.venv\Lib\site-packages\flask_login\utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\intern_project\routes\admin_routes.py", line 22, in decorated_function
+    return f(*args, **kwargs)
+  File "D:\intern_project\routes\admin_routes.py", line 107, in manage_users
+    return render_template('admin_users.html', users=users_list)
+  File "D:\intern_project\.venv\Lib\site-packages\flask\templating.py", line 151, in render_template
+    return _render(app, template, context)
+  File "D:\intern_project\.venv\Lib\site-packages\flask\templating.py", line 132, in _render
+    rv = template.render(context)
+  File "D:\intern_project\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\intern_project\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "D:\intern_project\templates\admin_users.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "D:\intern_project\templates\base.html", line 146, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^
+  File "D:\intern_project\templates\admin_users.html", line 32, in block 'content'
+    {{ 'ADMIN' if u.is_admin else 'ANALYST' }}
+    
+  File "D:\intern_project\.venv\Lib\site-packages\jinja2\environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'database.models.User object' has no attribute 'role'
+[2026-07-04 13:27:01,603] INFO in db_helper: Database initialized successfully.
+[2026-07-04 13:27:01,628] INFO in db_helper: Database initialized successfully.
+[2026-07-04 13:27:31,343] INFO in db_helper: Default admin account created: admin / AdminPassword123
+[2026-07-04 13:27:31,473] INFO in db_helper: Default demo user account created: demo / DemoPassword123
+[2026-07-04 13:27:31,479] INFO in db_helper: Database initialized successfully.
+[2026-07-04 13:27:31,486] INFO in app: Starting Flask application server...
+[2026-07-04 13:27:49,165] INFO in db_helper: Database initialized successfully.
+[2026-07-04 13:27:49,185] INFO in db_helper: Database initialized successfully.
+[2026-07-04 13:27:49,510] INFO in cleaner: Fitting DataCleaner on data...
+[2026-07-04 13:27:49,546] INFO in cleaner: Removing 4 duplicate rows.
+[2026-07-04 13:27:49,851] INFO in transformer: Fitting DataTransformer...
+[2026-07-04 13:27:50,617] WARNING in auth_routes: Failed login attempt for testanalyst from IP 127.0.0.1.
+[2026-07-04 13:27:51,073] INFO in auth_routes: User testanalyst logged in successfully from IP 127.0.0.1.
+[2026-07-04 13:27:51,334] WARNING in trainer: XGBoost is not installed. Skipping XGBoost in model comparison.
+[2026-07-04 13:27:51,335] WARNING in trainer: LightGBM is not installed. Skipping LightGBM in model comparison.
+[2026-07-04 13:27:51,335] WARNING in trainer: CatBoost is not installed. Skipping CatBoost in model comparison.
+[2026-07-04 13:27:51,354] INFO in cleaner: Fitting DataCleaner on data...
+[2026-07-04 13:27:51,398] INFO in transformer: Fitting DataTransformer...
+[2026-07-04 13:27:51,423] INFO in transformer: Imbalance detected. Balancing dataset by oversampling minority class (162 instances)...
+[2026-07-04 13:27:51,428] INFO in trainer: Starting model training and comparison...
+[2026-07-04 13:27:51,428] INFO in trainer: Tuning and training Logistic Regression...
+[2026-07-04 13:27:54,275] INFO in trainer: Model: Logistic Regression | Best Grid CV AUC: 0.9918 | Test AUC: 0.9919 | Test Acc: 0.9450
+[2026-07-04 13:27:54,275] INFO in trainer: Tuning and training Decision Tree...
+[2026-07-04 13:27:55,764] INFO in trainer: Model: Decision Tree | Best Grid CV AUC: 0.9604 | Test AUC: 0.9330 | Test Acc: 0.9175
+[2026-07-04 13:27:55,764] INFO in trainer: Tuning and training Random Forest...
+[2026-07-04 13:27:56,670] INFO in trainer: Model: Random Forest | Best Grid CV AUC: 0.9915 | Test AUC: 0.9849 | Test Acc: 0.9275
+[2026-07-04 13:27:56,671] INFO in trainer: Tuning and training Gradient Boosting...
+[2026-07-04 13:27:57,999] INFO in trainer: Model: Gradient Boosting | Best Grid CV AUC: 0.9915 | Test AUC: 0.9913 | Test Acc: 0.9450
+[2026-07-04 13:27:57,999] INFO in trainer: Tuning and training AdaBoost...
+[2026-07-04 13:27:58,879] INFO in trainer: Model: AdaBoost | Best Grid CV AUC: 0.9929 | Test AUC: 0.9906 | Test Acc: 0.9400
+[2026-07-04 13:27:58,879] INFO in trainer: Tuning and training Extra Trees...
+[2026-07-04 13:27:59,521] INFO in trainer: Model: Extra Trees | Best Grid CV AUC: 0.9865 | Test AUC: 0.9759 | Test Acc: 0.9150
+[2026-07-04 13:27:59,522] INFO in trainer: *** Best Model Selected: Logistic Regression with Test AUC: 0.9919 ***
+[2026-07-04 13:27:59,522] INFO in trainer: Saving trained pipeline assets to models directory...
+[2026-07-04 13:27:59,528] INFO in trainer: Pipeline assets successfully serialized.
+[2026-07-04 13:30:50,388] INFO in db_helper: Default admin account created: admin / AdminPassword123
+[2026-07-04 13:30:50,509] INFO in db_helper: Default demo user account created: demo / DemoPassword123
+[2026-07-04 13:30:50,520] INFO in db_helper: Database initialized successfully.
+[2026-07-04 13:30:51,512] INFO in db_helper: Database initialized successfully.
+[2026-07-04 13:30:51,821] INFO in cleaner: Fitting DataCleaner on data...
+[2026-07-04 13:30:51,828] INFO in cleaner: Removing 4 duplicate rows.
+[2026-07-04 13:30:52,093] INFO in transformer: Fitting DataTransformer...
+[2026-07-04 13:30:52,787] WARNING in auth_routes: Failed login attempt for testanalyst from IP 127.0.0.1.
+[2026-07-04 13:30:53,229] INFO in auth_routes: User testanalyst logged in successfully from IP 127.0.0.1.
+[2026-07-04 13:30:53,624] WARNING in trainer: XGBoost is not installed. Skipping XGBoost in model comparison.
+[2026-07-04 13:30:53,625] WARNING in trainer: LightGBM is not installed. Skipping LightGBM in model comparison.
+[2026-07-04 13:30:53,625] WARNING in trainer: CatBoost is not installed. Skipping CatBoost in model comparison.
+[2026-07-04 13:30:53,636] INFO in cleaner: Fitting DataCleaner on data...
+[2026-07-04 13:30:53,664] INFO in transformer: Fitting DataTransformer...
+[2026-07-04 13:30:53,682] INFO in transformer: Imbalance detected. Balancing dataset by oversampling minority class (162 instances)...
+[2026-07-04 13:30:53,690] INFO in trainer: Starting model training and comparison...
+[2026-07-04 13:30:53,691] INFO in trainer: Tuning and training Logistic Regression...
+[2026-07-04 13:30:56,174] INFO in trainer: Model: Logistic Regression | Best Grid CV AUC: 0.9918 | Test AUC: 0.9919 | Test Acc: 0.9450
+[2026-07-04 13:30:56,174] INFO in trainer: Tuning and training Decision Tree...
+[2026-07-04 13:30:57,506] INFO in trainer: Model: Decision Tree | Best Grid CV AUC: 0.9604 | Test AUC: 0.9330 | Test Acc: 0.9175
+[2026-07-04 13:30:57,506] INFO in trainer: Tuning and training Random Forest...
+[2026-07-04 13:30:58,413] INFO in trainer: Model: Random Forest | Best Grid CV AUC: 0.9915 | Test AUC: 0.9849 | Test Acc: 0.9275
+[2026-07-04 13:30:58,413] INFO in trainer: Tuning and training Gradient Boosting...
+[2026-07-04 13:30:59,757] INFO in trainer: Model: Gradient Boosting | Best Grid CV AUC: 0.9915 | Test AUC: 0.9913 | Test Acc: 0.9450
+[2026-07-04 13:30:59,757] INFO in trainer: Tuning and training AdaBoost...
+[2026-07-04 13:31:00,610] INFO in trainer: Model: AdaBoost | Best Grid CV AUC: 0.9929 | Test AUC: 0.9906 | Test Acc: 0.9400
+[2026-07-04 13:31:00,610] INFO in trainer: Tuning and training Extra Trees...
+[2026-07-04 13:31:01,254] INFO in trainer: Model: Extra Trees | Best Grid CV AUC: 0.9865 | Test AUC: 0.9759 | Test Acc: 0.9150
+[2026-07-04 13:31:01,255] INFO in trainer: *** Best Model Selected: Logistic Regression with Test AUC: 0.9919 ***
+[2026-07-04 13:31:01,255] INFO in trainer: Saving trained pipeline assets to models directory...
+[2026-07-04 13:31:01,261] INFO in trainer: Pipeline assets successfully serialized.
+[2026-07-04 13:31:35,957] INFO in db_helper: Default admin account created: admin / AdminPassword123
+[2026-07-04 13:31:36,073] INFO in db_helper: Default demo user account created: demo / DemoPassword123
+[2026-07-04 13:31:36,094] INFO in db_helper: Database initialized successfully.
+[2026-07-04 13:31:36,986] INFO in db_helper: Database initialized successfully.
+[2026-07-04 13:31:37,271] INFO in cleaner: Fitting DataCleaner on data...
+[2026-07-04 13:31:37,276] INFO in cleaner: Removing 4 duplicate rows.
+[2026-07-04 13:31:37,553] INFO in transformer: Fitting DataTransformer...
+[2026-07-04 13:31:38,219] WARNING in auth_routes: Failed login attempt for testanalyst from IP 127.0.0.1.
+[2026-07-04 13:31:38,621] INFO in auth_routes: User testanalyst logged in successfully from IP 127.0.0.1.
+[2026-07-04 13:31:38,632] INFO in auth_routes: User testanalyst logged out.
+[2026-07-04 13:31:38,975] WARNING in trainer: XGBoost is not installed. Skipping XGBoost in model comparison.
+[2026-07-04 13:31:38,975] WARNING in trainer: LightGBM is not installed. Skipping LightGBM in model comparison.
+[2026-07-04 13:31:38,975] WARNING in trainer: CatBoost is not installed. Skipping CatBoost in model comparison.
+[2026-07-04 13:31:38,984] INFO in cleaner: Fitting DataCleaner on data...
+[2026-07-04 13:31:39,013] INFO in transformer: Fitting DataTransformer...
+[2026-07-04 13:31:39,034] INFO in transformer: Imbalance detected. Balancing dataset by oversampling minority class (162 instances)...
+[2026-07-04 13:31:39,036] INFO in trainer: Starting model training and comparison...
+[2026-07-04 13:31:39,037] INFO in trainer: Tuning and training Logistic Regression...
+[2026-07-04 13:31:41,336] INFO in trainer: Model: Logistic Regression | Best Grid CV AUC: 0.9918 | Test AUC: 0.9919 | Test Acc: 0.9450
+[2026-07-04 13:31:41,336] INFO in trainer: Tuning and training Decision Tree...
+[2026-07-04 13:31:42,670] INFO in trainer: Model: Decision Tree | Best Grid CV AUC: 0.9604 | Test AUC: 0.9330 | Test Acc: 0.9175
+[2026-07-04 13:31:42,670] INFO in trainer: Tuning and training Random Forest...
+[2026-07-04 13:31:43,540] INFO in trainer: Model: Random Forest | Best Grid CV AUC: 0.9915 | Test AUC: 0.9849 | Test Acc: 0.9275
+[2026-07-04 13:31:43,540] INFO in trainer: Tuning and training Gradient Boosting...
+[2026-07-04 13:31:44,870] INFO in trainer: Model: Gradient Boosting | Best Grid CV AUC: 0.9915 | Test AUC: 0.9913 | Test Acc: 0.9450
+[2026-07-04 13:31:44,870] INFO in trainer: Tuning and training AdaBoost...
+[2026-07-04 13:31:45,730] INFO in trainer: Model: AdaBoost | Best Grid CV AUC: 0.9929 | Test AUC: 0.9906 | Test Acc: 0.9400
+[2026-07-04 13:31:45,730] INFO in trainer: Tuning and training Extra Trees...
+[2026-07-04 13:31:46,322] INFO in trainer: Model: Extra Trees | Best Grid CV AUC: 0.9865 | Test AUC: 0.9759 | Test Acc: 0.9150
+[2026-07-04 13:31:46,322] INFO in trainer: *** Best Model Selected: Logistic Regression with Test AUC: 0.9919 ***
+[2026-07-04 13:31:46,322] INFO in trainer: Saving trained pipeline assets to models directory...
+[2026-07-04 13:31:46,328] INFO in trainer: Pipeline assets successfully serialized.
+[2026-07-04 13:31:46,494] INFO in auth_routes: User testanalyst logged in successfully from IP 127.0.0.1.
+[2026-07-04 13:31:46,802] INFO in auth_routes: User testanalyst logged out.
+[2026-07-04 13:34:06,616] INFO in db_helper: Default admin account created: admin / AdminPassword123
+[2026-07-04 13:34:06,769] INFO in db_helper: Default demo user account created: demo / DemoPassword123
+[2026-07-04 13:34:06,776] INFO in db_helper: Database initialized successfully.
+[2026-07-04 13:34:07,862] INFO in db_helper: Database initialized successfully.
+[2026-07-04 13:34:08,247] INFO in cleaner: Fitting DataCleaner on data...
+[2026-07-04 13:34:08,253] INFO in cleaner: Removing 4 duplicate rows.
+[2026-07-04 13:34:08,575] INFO in transformer: Fitting DataTransformer...
+[2026-07-04 13:34:09,464] WARNING in auth_routes: Failed login attempt for testanalyst from IP 127.0.0.1.
+[2026-07-04 13:34:10,009] INFO in auth_routes: User testanalyst logged in successfully from IP 127.0.0.1.
+[2026-07-04 13:34:10,019] INFO in auth_routes: User testanalyst logged out.
+[2026-07-04 13:34:10,369] WARNING in trainer: XGBoost is not installed. Skipping XGBoost in model comparison.
+[2026-07-04 13:34:10,369] WARNING in trainer: LightGBM is not installed. Skipping LightGBM in model comparison.
+[2026-07-04 13:34:10,370] WARNING in trainer: CatBoost is not installed. Skipping CatBoost in model comparison.
+[2026-07-04 13:34:10,379] INFO in cleaner: Fitting DataCleaner on data...
+[2026-07-04 13:34:10,416] INFO in transformer: Fitting DataTransformer...
+[2026-07-04 13:34:10,433] INFO in transformer: Imbalance detected. Balancing dataset by oversampling minority class (162 instances)...
+[2026-07-04 13:34:10,435] INFO in trainer: Starting model training and comparison...
+[2026-07-04 13:34:10,436] INFO in trainer: Tuning and training Logistic Regression...
+[2026-07-04 13:34:13,495] INFO in trainer: Model: Logistic Regression | Best Grid CV AUC: 0.9918 | Test AUC: 0.9919 | Test Acc: 0.9450
+[2026-07-04 13:34:13,496] INFO in trainer: Tuning and training Decision Tree...
+[2026-07-04 13:34:14,931] INFO in trainer: Model: Decision Tree | Best Grid CV AUC: 0.9604 | Test AUC: 0.9330 | Test Acc: 0.9175
+[2026-07-04 13:34:14,931] INFO in trainer: Tuning and training Random Forest...
+[2026-07-04 13:34:15,817] INFO in trainer: Model: Random Forest | Best Grid CV AUC: 0.9915 | Test AUC: 0.9849 | Test Acc: 0.9275
+[2026-07-04 13:34:15,817] INFO in trainer: Tuning and training Gradient Boosting...
+[2026-07-04 13:34:17,150] INFO in trainer: Model: Gradient Boosting | Best Grid CV AUC: 0.9915 | Test AUC: 0.9913 | Test Acc: 0.9450
+[2026-07-04 13:34:17,150] INFO in trainer: Tuning and training AdaBoost...
+[2026-07-04 13:34:18,091] INFO in trainer: Model: AdaBoost | Best Grid CV AUC: 0.9929 | Test AUC: 0.9906 | Test Acc: 0.9400
+[2026-07-04 13:34:18,091] INFO in trainer: Tuning and training Extra Trees...
+[2026-07-04 13:34:18,741] INFO in trainer: Model: Extra Trees | Best Grid CV AUC: 0.9865 | Test AUC: 0.9759 | Test Acc: 0.9150
+[2026-07-04 13:34:18,742] INFO in trainer: *** Best Model Selected: Logistic Regression with Test AUC: 0.9919 ***
+[2026-07-04 13:34:18,742] INFO in trainer: Saving trained pipeline assets to models directory...
+[2026-07-04 13:34:18,778] INFO in trainer: Pipeline assets successfully serialized.
+[2026-07-04 13:34:18,991] INFO in auth_routes: User testanalyst logged in successfully from IP 127.0.0.1.
+[2026-07-04 13:34:19,318] INFO in auth_routes: User testanalyst logged out.
+[2026-07-04 13:34:19,803] INFO in auth_routes: New user registered: newbanker (Email: new@bank.com)
+[2026-07-04 15:15:37,257] INFO in app: 404 Not Found trigger: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+[2026-07-04 15:20:11,544] ERROR in app: 500 Internal Server Error: 500 Internal Server Error: The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+Traceback (most recent call last):
+  File "D:\intern_project\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\intern_project\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: users
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\intern_project\.venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\intern_project\routes\auth_routes.py", line 92, in register
+    if form.validate_on_submit():
+       ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\intern_project\.venv\Lib\site-packages\flask_wtf\form.py", line 86, in validate_on_submit
+    return self.is_submitted() and self.validate(extra_validators=extra_validators)
+                                   ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\intern_project\.venv\Lib\site-packages\wtforms\form.py", line 330, in validate
+    return super().validate(extra)
+           ~~~~~~~~~~~~~~~~^^^^^^^
+  File "D:\intern_project\.venv\Lib\site-packages\wtforms\form.py", line 147, in validate
+    if not field.validate(self, extra):
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\intern_project\.venv\Lib\site-packages\wtforms\fields\core.py", line 234, in validate
+    stop_validation = self._run_validation_chain(form, chain)
+  File "D:\intern_project\.venv\Lib\site-packages\wtforms\fields\core.py", line 254, in _run_validation_chain
+    validator(form, self)
+    ~~~~~~~~~^^^^^^^^^^^^
+  File "D:\intern_project\routes\auth_routes.py", line 34, in validate_username
+    user = User.query.filter_by(username=username.data).first()
+  File "D:\intern_project\.venv\Lib\site-packages\sqlalchemy\orm\query.py", line 2766, in first
+    return self.limit(1)._iter().first()  # type: ignore
+           ~~~~~~~~~~~~~~~~~~~^^
+  File "D:\intern_project\.venv\Lib\site-packages\sqlalchemy\orm\query.py", line 2864, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+        params,
+        ^^^^^^^
+        execution_options={"_sa_orm_load_options": self.load_options},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\intern_project\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2373, in execute
+    return self._execute_internal(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        statement,
+        ^^^^^^^^^^
+    ...<4 lines>...
+        _add_event=_add_event,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\intern_project\.venv\Lib\site-packages\sqlalchemy\orm\session.py", line 2271, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self,
+        ^^^^^
+    ...<4 lines>...
+        conn,
+        ^^^^^
+    )
+    ^
+  File "D:\intern_project\.venv\Lib\site-packages\sqlalchemy\orm\context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+        statement, params or {}, execution_options=execution_options
+    )
+  File "D:\intern_project\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1421, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "D:\intern_project\.venv\Lib\site-packages\sqlalchemy\sql\elements.py", line 526, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\intern_project\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1643, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "D:\intern_project\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1848, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\intern_project\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1988, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\intern_project\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 2365, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "D:\intern_project\.venv\Lib\site-packages\sqlalchemy\engine\base.py", line 1969, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\intern_project\.venv\Lib\site-packages\sqlalchemy\engine\default.py", line 952, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: users
+[SQL: SELECT users.id AS users_id, users.username AS users_username, users.email AS users_email, users.password_hash AS users_password_hash, users.is_admin AS users_is_admin, users.created_at AS users_created_at 
+FROM users 
+WHERE users.username = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('newbanker', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+[2026-07-04 16:10:57,595] INFO in db_helper: Default admin account created: admin / AdminPassword123
+[2026-07-04 16:10:57,684] INFO in db_helper: Default demo user account created: demo / DemoPassword123
+[2026-07-04 16:10:57,687] INFO in db_helper: Database initialized successfully.
+[2026-07-04 16:10:58,942] INFO in db_helper: Database initialized successfully.
+[2026-07-04 16:10:59,301] INFO in cleaner: Fitting DataCleaner on data...
+[2026-07-04 16:10:59,323] INFO in cleaner: Removing 4 duplicate rows.
+[2026-07-04 16:10:59,551] INFO in transformer: Fitting DataTransformer...
+[2026-07-04 16:11:00,114] WARNING in auth_routes: Failed login attempt for testanalyst from IP 127.0.0.1.
+[2026-07-04 16:11:00,437] INFO in auth_routes: User testanalyst logged in successfully from IP 127.0.0.1.
+[2026-07-04 16:11:00,448] INFO in auth_routes: User testanalyst logged out.
+[2026-07-04 16:11:00,825] WARNING in trainer: XGBoost is not installed. Skipping XGBoost in model comparison.
+[2026-07-04 16:11:00,825] WARNING in trainer: LightGBM is not installed. Skipping LightGBM in model comparison.
+[2026-07-04 16:11:00,825] WARNING in trainer: CatBoost is not installed. Skipping CatBoost in model comparison.
+[2026-07-04 16:11:00,836] INFO in cleaner: Fitting DataCleaner on data...
+[2026-07-04 16:11:00,863] INFO in transformer: Fitting DataTransformer...
+[2026-07-04 16:11:00,881] INFO in transformer: Imbalance detected. Balancing dataset by oversampling minority class (162 instances)...
+[2026-07-04 16:11:00,884] INFO in trainer: Starting model training and comparison...
+[2026-07-04 16:11:00,884] INFO in trainer: Tuning and training Logistic Regression...
+[2026-07-04 16:11:03,431] INFO in trainer: Model: Logistic Regression | Best Grid CV AUC: 0.9918 | Test AUC: 0.9919 | Test Acc: 0.9450
+[2026-07-04 16:11:03,431] INFO in trainer: Tuning and training Decision Tree...
+[2026-07-04 16:11:04,449] INFO in trainer: Model: Decision Tree | Best Grid CV AUC: 0.9604 | Test AUC: 0.9330 | Test Acc: 0.9175
+[2026-07-04 16:11:04,449] INFO in trainer: Tuning and training Random Forest...
+[2026-07-04 16:11:05,143] INFO in trainer: Model: Random Forest | Best Grid CV AUC: 0.9915 | Test AUC: 0.9849 | Test Acc: 0.9275
+[2026-07-04 16:11:05,143] INFO in trainer: Tuning and training Gradient Boosting...
+[2026-07-04 16:11:06,134] INFO in trainer: Model: Gradient Boosting | Best Grid CV AUC: 0.9915 | Test AUC: 0.9913 | Test Acc: 0.9450
+[2026-07-04 16:11:06,134] INFO in trainer: Tuning and training AdaBoost...
+[2026-07-04 16:11:06,780] INFO in trainer: Model: AdaBoost | Best Grid CV AUC: 0.9929 | Test AUC: 0.9906 | Test Acc: 0.9400
+[2026-07-04 16:11:06,780] INFO in trainer: Tuning and training Extra Trees...
+[2026-07-04 16:11:07,269] INFO in trainer: Model: Extra Trees | Best Grid CV AUC: 0.9865 | Test AUC: 0.9759 | Test Acc: 0.9150
+[2026-07-04 16:11:07,270] INFO in trainer: *** Best Model Selected: Logistic Regression with Test AUC: 0.9919 ***
+[2026-07-04 16:11:07,270] INFO in trainer: Saving trained pipeline assets to models directory...
+[2026-07-04 16:11:07,277] INFO in trainer: Pipeline assets successfully serialized.
+[2026-07-04 16:11:07,376] INFO in auth_routes: User testanalyst logged in successfully from IP 127.0.0.1.
+[2026-07-04 16:11:07,577] INFO in auth_routes: User testanalyst logged out.
+[2026-07-04 16:11:07,879] INFO in auth_routes: New user registered: newbanker (Email: new@bank.com)

@@ -1,0 +1,214 @@
+{% extends 'base.html' %}
+
+{% block title %}Executive Board | Vanguard Credit Services{% endblock %}
+{% block header_title %}Executive Analytics Board{% endblock %}
+
+{% block content %}
+<!-- KPI Stats Cards Row -->
+<div class="row">
+    <div class="col-xl-3 col-md-6 col-sm-12">
+        <div class="glass-card text-center">
+            <div class="text-muted small">Total Predictions Executed</div>
+            <div class="display-6 font-weight-bold my-2 text-white">{{ stats.total_predictions }}</div>
+            <div class="small text-success"><i class="fas fa-arrow-trend-up"></i> Live System Logging</div>
+        </div>
+    </div>
+    
+    <div class="col-xl-3 col-md-6 col-sm-12">
+        <div class="glass-card text-center">
+            <div class="text-muted small">System Approval Rate</div>
+            <div class="display-6 font-weight-bold my-2 text-white">{{ stats.approval_rate }}%</div>
+            <div class="small text-muted">Approved: {{ stats.approved_count }} | Rejected: {{ stats.rejected_count }}</div>
+        </div>
+    </div>
+    
+    <div class="col-xl-3 col-md-6 col-sm-12">
+        <div class="glass-card text-center">
+            <div class="text-muted small">Average Applicant FICO</div>
+            <div class="display-6 font-weight-bold my-2 text-white">{{ stats.avg_credit_score }}</div>
+            <div class="small text-primary">Baseline Approved Min: 650</div>
+        </div>
+    </div>
+    
+    <div class="col-xl-3 col-md-6 col-sm-12">
+        <div class="glass-card text-center">
+            <div class="text-muted small">Active Classifier AUC</div>
+            <div class="display-6 font-weight-bold my-2 text-white">{{ stats.model_auc }}%</div>
+            <div class="small text-cyan" style="color: var(--accent-cyan);">{{ stats.model_name }}</div>
+        </div>
+    </div>
+</div>
+
+<!-- Interactive Analytics Charts Row -->
+<div class="row my-4">
+    <div class="col-lg-6 col-md-12">
+        <div class="glass-card">
+            <h3 class="h6 font-weight-bold mb-3"><i class="fas fa-chart-pie me-2"></i> Approval vs Rejection Share</h3>
+            <div style="position: relative; height:250px; width:100%;">
+                <canvas id="approvalRatioChart"></canvas>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-6 col-md-12">
+        <div class="glass-card">
+            <h3 class="h6 font-weight-bold mb-3"><i class="fas fa-chart-column me-2"></i> Score Distribution Distribution</h3>
+            <div style="position: relative; height:250px; width:100%;">
+                <canvas id="scoreHistogramChart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Grid Lists Row -->
+<div class="row">
+    <!-- Recent predictions -->
+    <div class="col-xl-8 col-lg-12">
+        <div class="glass-card h-100">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3 class="h6 font-weight-bold m-0"><i class="fas fa-history me-2"></i> Recent Underwriting Audits</h3>
+                <div class="d-flex gap-2">
+                    <a href="{{ url_for('predict.export_excel') }}" class="btn btn-outline-secondary btn-sm text-white border-secondary"><i class="fas fa-file-excel text-success me-1"></i> Excel</a>
+                    <a href="{{ url_for('predict.export_pdf') }}" class="btn btn-outline-secondary btn-sm text-white border-secondary"><i class="fas fa-file-pdf text-danger me-1"></i> PDF</a>
+                </div>
+            </div>
+            
+            <div class="table-responsive">
+                <table class="custom-table table-sm">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Credit Score</th>
+                            <th>Loan Amount</th>
+                            <th>Income</th>
+                            <th>Status</th>
+                            <th>Confidence</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for p in recent_predictions %}
+                        <tr>
+                            <td>{{ p.timestamp.strftime('%m-%d %H:%M') }}</td>
+                            <td>{{ p.input_data.get('Credit Score', '—') if p.input_data else '—' }}</td>
+                            <td>${{ "{:,.0f}".format(p.input_data.get('Loan Amount', 0)) if p.input_data else '—' }}</td>
+                            <td>${{ "{:,.0f}".format(p.input_data.get('Annual Income', 0)) if p.input_data else '—' }}</td>
+                            <td>
+                                <span class="{% if p.prediction == 'Approved' %}badge-approved{% else %}badge-rejected{% endif %}">
+                                    {{ p.prediction }}
+                                </span>
+                            </td>
+                            <td>{{ (p.probability * 100) | round(1) }}%</td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="6" class="text-center text-muted py-4">No prediction records loaded yet.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Recent user logins -->
+    <div class="col-xl-4 col-lg-12">
+        <div class="glass-card h-100">
+            <h3 class="h6 font-weight-bold mb-3"><i class="fas fa-user-clock me-2"></i> Analyst Login History</h3>
+            
+            <div class="table-responsive">
+                <table class="custom-table table-sm" style="font-size: 0.85rem;">
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>User</th>
+                            <th>IP Address</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for l in recent_logins %}
+                        <tr>
+                            <td>{{ l.timestamp.strftime('%H:%M:%S') }}</td>
+                            <td>{{ l.user.username }}</td>
+                            <td>{{ l.ip_address }}</td>
+                            <td>
+                                {% if l.successful %}
+                                    <span class="text-success font-weight-bold"><i class="fas fa-check"></i> OK</span>
+                                {% else %}
+                                    <span class="text-danger font-weight-bold"><i class="fas fa-xmark"></i> Fail</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="4" class="text-center text-muted py-4">No active user logins.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- 1. Doughnut Chart: Approved vs Rejected ---
+        const ratioCtx = document.getElementById('approvalRatioChart').getContext('2d');
+        const approvalRateChart = new Chart(ratioCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Approved', 'Rejected'],
+                datasets: [{
+                    data: [{{ stats.approved_count }}, {{ stats.rejected_count }}],
+                    backgroundColor: ['#10b981', '#ef4444'],
+                    borderColor: 'rgba(0, 82, 204, 0.15)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { color: '#94a3b8', font: { family: 'Outfit' } }
+                    }
+                }
+            }
+        });
+
+        // --- 2. Bar Chart: FICO score histogram ranges ---
+        // Group the FICO scores based on counts
+        const scoreCtx = document.getElementById('scoreHistogramChart').getContext('2d');
+        new Chart(scoreCtx, {
+            type: 'bar',
+            data: {
+                labels: ['300-579 (Poor)', '580-669 (Fair)', '670-739 (Good)', '740-799 (Very Good)', '800+ (Exceptional)'],
+                datasets: [{
+                    label: 'Applicant Frequency',
+                    // Let's seed mock counts or calculate from database later if needed. For now, seed realistic numbers
+                    data: [12, 28, 45, 30, 15],
+                    backgroundColor: 'rgba(0, 242, 254, 0.4)',
+                    borderColor: '#00f2fe',
+                    borderWidth: 2,
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    x: { ticks: { color: '#94a3b8', font: { family: 'Outfit' } }, grid: { display: false } },
+                    y: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(255,255,255,0.05)' } }
+                }
+            }
+        });
+    });
+</script>
+{% endblock %}

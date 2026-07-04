@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Vanguard Credit Services | AI Prediction Dashboard{% endblock %}</title>
+    <meta name="description" content="AI-Powered Credit Card Approval Prediction System leveraging advanced machine learning algorithms.">
+    <meta name="author" content="Vanguard Finance">
+    
+    <!-- Fonts and Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom Style Sheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <div class="app-wrapper">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="brand-section">
+                <div class="brand-logo"><i class="fas fa-shield-halved"></i></div>
+                <span class="brand-name">{{ system_name }}</span>
+            </div>
+            
+            <nav class="sidebar-nav">
+                {% if current_user.is_authenticated %}
+                    {% if current_user.is_admin %}
+                        <a href="{{ url_for('admin.dashboard') }}" class="nav-item {% if request.path == url_for('admin.dashboard') %}active{% endif %}">
+                            <i class="fas fa-chart-pie"></i> Executive Board
+                        </a>
+                    {% endif %}
+                    
+                    <a href="{{ url_for('predict.predict_form') }}" class="nav-item {% if request.path == url_for('predict.predict_form') %}active{% endif %}">
+                        <i class="fas fa-id-card"></i> New Prediction
+                    </a>
+                    
+                    <a href="{{ url_for('predict.predict_form') }}" class="nav-item {% if request.path == url_for('predict.predict_form') %}active{% endif %}">
+                        <i class="fas fa-file-csv"></i> Batch Upload
+                    </a>
+                    
+                    <a href="{{ url_for('main.prediction_history') }}" class="nav-item {% if request.path == url_for('main.prediction_history') %}active{% endif %}">
+                        <i class="fas fa-history"></i> Audit Trail
+                    </a>
+                    
+                    <a href="{{ url_for('main.performance') }}" class="nav-item {% if request.path == url_for('main.performance') %}active{% endif %}">
+                        <i class="fas fa-server"></i> Model Performance
+                    </a>
+                    
+                    {% if current_user.is_admin %}
+                        <a href="{{ url_for('admin.view_logs') }}" class="nav-item {% if request.path == url_for('admin.view_logs') %}active{% endif %}">
+                            <i class="fas fa-terminal"></i> System Logs
+                        </a>
+                        <a href="{{ url_for('admin.system_settings') }}" class="nav-item {% if request.path == url_for('admin.system_settings') %}active{% endif %}">
+                            <i class="fas fa-sliders"></i> System Settings
+                        </a>
+                        <a href="{{ url_for('admin.manage_users') }}" class="nav-item {% if request.path == url_for('admin.manage_users') %}active{% endif %}">
+                            <i class="fas fa-users-cog"></i> User Management
+                        </a>
+                    {% endif %}
+                {% else %}
+                    <a href="{{ url_for('main.home') }}" class="nav-item {% if request.path == url_for('main.home') %}active{% endif %}">
+                        <i class="fas fa-home"></i> Home Portal
+                    </a>
+                {% endif %}
+                
+                <a href="{{ url_for('main.about') }}" class="nav-item {% if request.path == url_for('main.about') %}active{% endif %}">
+                    <i class="fas fa-circle-info"></i> About
+                </a>
+                
+                <a href="{{ url_for('main.contact') }}" class="nav-item {% if request.path == url_for('main.contact') %}active{% endif %}">
+                    <i class="fas fa-envelope"></i> Contact Us
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                {% if current_user.is_authenticated %}
+                    <a href="{{ url_for('auth.logout') }}" class="nav-item text-danger">
+                        <i class="fas fa-sign-out-alt"></i> Sign Out
+                    </a>
+                {% else %}
+                    <a href="{{ url_for('auth.login') }}" class="nav-item text-primary">
+                        <i class="fas fa-sign-in-alt"></i> Banker Login
+                    </a>
+                {% endif %}
+            </div>
+        </aside>
+
+        <!-- Main Window Container -->
+        <main class="main-content">
+            <!-- Top Navbar header bar -->
+            <header class="top-navbar">
+                <h1 class="h4 m-0 font-weight-bold">
+                    {% block header_title %}Dashboard{% endblock %}
+                </h1>
+                
+                <div class="navbar-user">
+                    <!-- Light / Dark Mode Toggle -->
+                    <button class="theme-toggle-btn" id="theme-toggle" title="Switch Theme">
+                        <i class="fas fa-sun"></i>
+                    </button>
+                    
+                    {% if current_user.is_authenticated %}
+                        <div class="dropdown">
+                            <a class="btn btn-secondary dropdown-toggle bg-transparent border-0 d-flex align-items-center gap-2" href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center text-white font-weight-bold" style="width: 32px; height: 32px; font-size: 0.85rem;">
+                                    {{ current_user.username[0].upper() }}
+                                </div>
+                                <span class="d-none d-md-inline" style="color: var(--text-primary);">{{ current_user.username }}</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown" style="background: var(--bg-secondary); border: 1px solid var(--border-color);">
+                                <li><a class="dropdown-item text-white" href="{{ url_for('main.profile') }}"><i class="fas fa-user-edit me-2"></i> Edit Profile</a></li>
+                                <li><hr class="dropdown-divider" style="border-top: 1px solid var(--border-color);"></li>
+                                <li><a class="dropdown-item text-danger" href="{{ url_for('auth.logout') }}"><i class="fas fa-sign-out-alt me-2"></i> Sign Out</a></li>
+                            </ul>
+                        </div>
+                    {% else %}
+                        <a href="{{ url_for('auth.login') }}" class="btn btn-primary-neon btn-sm">Sign In</a>
+                    {% endif %}
+                </div>
+            </header>
+            
+            <!-- Toast notification alerts -->
+            <div id="toast-container" class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1050;"></div>
+            
+            <!-- Flash Message Panel -->
+            <div class="container mt-3 px-4">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category if category != 'error' else 'danger' }} alert-dismissible fade show" role="alert" style="background-color: rgba(var(--bs-{{ category if category != 'error' else 'danger' }}-rgb), 0.15); border: 1px solid var(--border-color); color: var(--text-primary);">
+                                {{ message }}
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+
+            <!-- Page Specific Content -->
+            <div class="page-container">
+                {% block content %}{% endblock %}
+            </div>
+            
+            <!-- Footer panel -->
+            <footer class="app-footer">
+                &copy; 2026 {{ system_name }}. Institutional Banking Platform. Secure prediction engine audited under Basel standards.
+            </footer>
+        </main>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom Main JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>
