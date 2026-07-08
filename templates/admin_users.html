@@ -25,7 +25,7 @@
                         {% for u in users %}
                         <tr>
                             <td class="font-monospace text-muted">#VC-USR-{{ u.id }}</td>
-                            <td class="font-weight-bold text-white">{{ u.username }}</td>
+                            <td class="font-weight-bold">{{ u.username }}</td>
                             <td>{{ u.email }}</td>
                             <td>
                                 <span class="badge {% if u.is_admin %}bg-primary{% else %}bg-secondary{% endif %} bg-opacity-25 {% if u.is_admin %}text-primary{% else %}text-muted{% endif %} font-weight-bold" style="font-size: 0.75rem;">

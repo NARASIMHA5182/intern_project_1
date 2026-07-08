@@ -7,7 +7,7 @@
 <div class="row justify-content-center">
     <div class="col-lg-8">
         <div class="glass-card">
-            <h3 class="h5 font-weight-bold mb-3 border-bottom pb-2" style="border-color: var(--border-color) !important; color: var(--accent-cyan);">
+            <h3 class="h5 font-weight-bold mb-3 border-bottom pb-2" style="border-color: var(--border) !important; color: var(--primary);">
                 <i class="fas fa-sliders-h me-2"></i> Parameter Configurations
             </h3>
             <p class="text-muted small mb-4">
@@ -19,10 +19,10 @@
                 
                 <div class="d-flex flex-column gap-4">
                     {% for s in settings %}
-                    <div class="p-3 rounded border" style="background-color: rgba(255, 255, 255, 0.01); border-color: var(--border-color) !important;">
+                    <div class="p-3 rounded border" style="background-color: var(--surface); border-color: var(--border) !important;">
                         <div class="row align-items-center">
                             <div class="col-md-5">
-                                <label for="setting-{{ s.config_key }}" class="font-weight-bold text-white small m-0">{{ s.config_key.replace('_', ' ').title() }}</label>
+                                <label for="setting-{{ s.config_key }}" class="font-weight-bold small m-0" style="color: var(--text-primary);">{{ s.config_key.replace('_', ' ').title() }}</label>
                                 <div class="text-muted small" style="font-size: 0.75rem;">{{ s.description }}</div>
                             </div>
                             <div class="col-md-7">

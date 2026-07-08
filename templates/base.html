@@ -112,9 +112,9 @@
                                 </div>
                                 <span class="d-none d-md-inline" style="color: var(--text-primary);">{{ current_user.username }}</span>
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown" style="background: var(--bg-secondary); border: 1px solid var(--border-color);">
-                                <li><a class="dropdown-item text-white" href="{{ url_for('main.profile') }}"><i class="fas fa-user-edit me-2"></i> Edit Profile</a></li>
-                                <li><hr class="dropdown-divider" style="border-top: 1px solid var(--border-color);"></li>
+                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown" style="background: var(--surface); border: 1px solid var(--border);">
+                                <li><a class="dropdown-item" href="{{ url_for('main.profile') }}"><i class="fas fa-user-edit me-2"></i> Edit Profile</a></li>
+                                <li><hr class="dropdown-divider" style="border-top: 1px solid var(--border);"></li>
                                 <li><a class="dropdown-item text-danger" href="{{ url_for('auth.logout') }}"><i class="fas fa-sign-out-alt me-2"></i> Sign Out</a></li>
                             </ul>
                         </div>
@@ -132,7 +132,7 @@
                 {% with messages = get_flashed_messages(with_categories=true) %}
                     {% if messages %}
                         {% for category, message in messages %}
-                            <div class="alert alert-{{ category if category != 'error' else 'danger' }} alert-dismissible fade show" role="alert" style="background-color: rgba(var(--bs-{{ category if category != 'error' else 'danger' }}-rgb), 0.15); border: 1px solid var(--border-color); color: var(--text-primary);">
+                            <div class="alert alert-{{ category if category != 'error' else 'danger' }} alert-dismissible fade show" role="alert" style="background-color: rgba(var(--bs-{{ category if category != 'error' else 'danger' }}-rgb), 0.15); border: 1px solid var(--border); color: var(--text-primary);">
                                 {{ message }}
                                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>

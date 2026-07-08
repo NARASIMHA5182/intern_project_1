@@ -9,7 +9,7 @@
     <div class="col-xl-3 col-md-6 col-sm-12">
         <div class="glass-card text-center">
             <div class="text-muted small">Total Predictions Executed</div>
-            <div class="display-6 font-weight-bold my-2 text-white">{{ stats.total_predictions }}</div>
+            <div class="display-6 font-weight-bold my-2 text-theme-primary">{{ stats.total_predictions }}</div>
             <div class="small text-success"><i class="fas fa-arrow-trend-up"></i> Live System Logging</div>
         </div>
     </div>
@@ -17,7 +17,7 @@
     <div class="col-xl-3 col-md-6 col-sm-12">
         <div class="glass-card text-center">
             <div class="text-muted small">System Approval Rate</div>
-            <div class="display-6 font-weight-bold my-2 text-white">{{ stats.approval_rate }}%</div>
+            <div class="display-6 font-weight-bold my-2 text-theme-primary">{{ stats.approval_rate }}%</div>
             <div class="small text-muted">Approved: {{ stats.approved_count }} | Rejected: {{ stats.rejected_count }}</div>
         </div>
     </div>
@@ -25,7 +25,7 @@
     <div class="col-xl-3 col-md-6 col-sm-12">
         <div class="glass-card text-center">
             <div class="text-muted small">Average Applicant FICO</div>
-            <div class="display-6 font-weight-bold my-2 text-white">{{ stats.avg_credit_score }}</div>
+            <div class="display-6 font-weight-bold my-2 text-theme-primary">{{ stats.avg_credit_score }}</div>
             <div class="small text-primary">Baseline Approved Min: 650</div>
         </div>
     </div>
@@ -33,8 +33,8 @@
     <div class="col-xl-3 col-md-6 col-sm-12">
         <div class="glass-card text-center">
             <div class="text-muted small">Active Classifier AUC</div>
-            <div class="display-6 font-weight-bold my-2 text-white">{{ stats.model_auc }}%</div>
-            <div class="small text-cyan" style="color: var(--accent-cyan);">{{ stats.model_name }}</div>
+            <div class="display-6 font-weight-bold my-2 text-theme-primary">{{ stats.model_auc }}%</div>
+            <div class="small text-primary" style="color: var(--primary) !important;">{{ stats.model_name }}</div>
         </div>
     </div>
 </div>
@@ -68,8 +68,8 @@
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <h3 class="h6 font-weight-bold m-0"><i class="fas fa-history me-2"></i> Recent Underwriting Audits</h3>
                 <div class="d-flex gap-2">
-                    <a href="{{ url_for('predict.export_excel') }}" class="btn btn-outline-secondary btn-sm text-white border-secondary"><i class="fas fa-file-excel text-success me-1"></i> Excel</a>
-                    <a href="{{ url_for('predict.export_pdf') }}" class="btn btn-outline-secondary btn-sm text-white border-secondary"><i class="fas fa-file-pdf text-danger me-1"></i> PDF</a>
+                    <a href="{{ url_for('predict.export_excel') }}" class="btn btn-outline-secondary btn-sm"><i class="fas fa-file-excel text-success me-1"></i> Excel</a>
+                    <a href="{{ url_for('predict.export_pdf') }}" class="btn btn-outline-secondary btn-sm"><i class="fas fa-file-pdf text-danger me-1"></i> PDF</a>
                 </div>
             </div>
             
@@ -155,59 +155,97 @@
 {% block scripts %}
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // --- 1. Doughnut Chart: Approved vs Rejected ---
-        const ratioCtx = document.getElementById('approvalRatioChart').getContext('2d');
-        const approvalRateChart = new Chart(ratioCtx, {
-            type: 'doughnut',
-            data: {
-                labels: ['Approved', 'Rejected'],
-                datasets: [{
-                    data: [{{ stats.approved_count }}, {{ stats.rejected_count }}],
-                    backgroundColor: ['#10b981', '#f87171'],
-                    borderColor: 'rgba(212, 175, 55, 0.15)',
-                    borderWidth: 2
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        position: 'bottom',
-                        labels: { color: '#8e9e95', font: { family: 'Outfit' } }
+        let approvalRateChart, scoreHistogramChart;
+
+        function getThemeColors() {
+            const style = getComputedStyle(document.documentElement);
+            return {
+                textMuted: style.getPropertyValue('--text-muted').trim() || '#94a3b8',
+                textPrimary: style.getPropertyValue('--text-primary').trim() || '#f8fafc',
+                border: style.getPropertyValue('--border').trim() || '#334155',
+                success: style.getPropertyValue('--success').trim() || '#10b981',
+                danger: style.getPropertyValue('--danger').trim() || '#ef4444',
+                primary: style.getPropertyValue('--primary').trim() || '#3b82f6',
+                surface: style.getPropertyValue('--surface').trim() || '#1e293b'
+            };
+        }
+
+        function buildCharts() {
+            const colors = getThemeColors();
+
+            // --- 1. Doughnut Chart: Approved vs Rejected ---
+            const ratioCtx = document.getElementById('approvalRatioChart').getContext('2d');
+            if (approvalRateChart) {
+                approvalRateChart.destroy();
+            }
+            approvalRateChart = new Chart(ratioCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Approved', 'Rejected'],
+                    datasets: [{
+                        data: [{{ stats.approved_count }}, {{ stats.rejected_count }}],
+                        backgroundColor: [colors.success, colors.danger],
+                        borderColor: colors.border,
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: { color: colors.textMuted, font: { family: 'Outfit' } }
+                        }
                     }
                 }
-            }
-        });
+            });
 
-        // --- 2. Bar Chart: FICO score histogram ranges ---
-        // Group the FICO scores based on counts
-        const scoreCtx = document.getElementById('scoreHistogramChart').getContext('2d');
-        new Chart(scoreCtx, {
-            type: 'bar',
-            data: {
-                labels: ['300-579 (Poor)', '580-669 (Fair)', '670-739 (Good)', '740-799 (Very Good)', '800+ (Exceptional)'],
-                datasets: [{
-                    label: 'Applicant Frequency',
-                    // Let's seed mock counts or calculate from database later if needed. For now, seed realistic numbers
-                    data: [12, 28, 45, 30, 15],
-                    backgroundColor: 'rgba(212, 175, 55, 0.4)',
-                    borderColor: '#ecd19a',
-                    borderWidth: 2,
-                    borderRadius: 4
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: { display: false }
-                },
-                scales: {
-                    x: { ticks: { color: '#8e9e95', font: { family: 'Outfit' } }, grid: { display: false } },
-                    y: { ticks: { color: '#8e9e95' }, grid: { color: 'rgba(255,255,255,0.05)' } }
-                }
+            // --- 2. Bar Chart: FICO score histogram ranges ---
+            const scoreCtx = document.getElementById('scoreHistogramChart').getContext('2d');
+            if (scoreHistogramChart) {
+                scoreHistogramChart.destroy();
             }
+            const primaryBarBg = colors.primary.startsWith('#') 
+                ? `${colors.primary}66` 
+                : colors.primary;
+
+            scoreHistogramChart = new Chart(scoreCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['300-579 (Poor)', '580-669 (Fair)', '670-739 (Good)', '740-799 (Very Good)', '800+ (Exceptional)'],
+                    datasets: [{
+                        label: 'Applicant Frequency',
+                        data: [12, 28, 45, 30, 15],
+                        backgroundColor: primaryBarBg,
+                        borderColor: colors.primary,
+                        borderWidth: 2,
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        x: { ticks: { color: colors.textMuted, font: { family: 'Outfit' } }, grid: { display: false } },
+                        y: { 
+                            ticks: { color: colors.textMuted }, 
+                            grid: { color: colors.border } 
+                        }
+                    }
+                }
+            });
+        }
+
+        // Build initial charts
+        buildCharts();
+
+        // Rebuild charts on theme change
+        window.addEventListener('theme-changed', () => {
+            buildCharts();
         });
     });
 </script>

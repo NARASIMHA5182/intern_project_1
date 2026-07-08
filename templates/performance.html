@@ -8,20 +8,20 @@
     <!-- Left Column: Metrics Overview -->
     <div class="col-lg-4">
         <div class="glass-card mb-4">
-            <h3 class="h5 font-weight-bold mb-3" style="color: var(--accent-cyan);"><i class="fas fa-microchip me-2"></i> Classifier Parameters</h3>
+            <h3 class="h5 font-weight-bold mb-3" style="color: var(--primary);"><i class="fas fa-microchip me-2"></i> Classifier Parameters</h3>
             <p class="text-muted small mb-4">
                 The active machine learning model evaluated on out-of-fold validation sets. Performance stats comply with regulatory validation guidelines.
             </p>
             
             <div class="d-flex flex-column gap-3">
-                <div class="p-3 rounded border" style="background: rgba(255,255,255,0.02); border-color: var(--border-color) !important;">
+                <div class="p-3 rounded border" style="background: var(--surface); border-color: var(--border) !important;">
                     <div class="text-muted small">Active Algorithm</div>
-                    <div class="fs-5 font-weight-bold text-white">{{ model_name }}</div>
+                    <div class="fs-5 font-weight-bold">{{ model_name }}</div>
                 </div>
                 
-                <div class="p-3 rounded border" style="background: rgba(255,255,255,0.02); border-color: var(--border-color) !important;">
+                <div class="p-3 rounded border" style="background: var(--surface); border-color: var(--border) !important;">
                     <div class="text-muted small">Area Under ROC (AUC)</div>
-                    <div class="fs-5 font-weight-bold text-white">{{ (test_auc * 100) | round(2) }}%</div>
+                    <div class="fs-5 font-weight-bold">{{ (test_auc * 100) | round(2) }}%</div>
                 </div>
             </div>
         </div>
@@ -31,24 +31,24 @@
             
             {% if metrics %}
                 <div class="d-flex flex-column gap-3">
-                    <div class="d-flex justify-content-between align-items-center border-bottom pb-2" style="border-color: var(--border-color) !important;">
+                    <div class="d-flex justify-content-between align-items-center border-bottom pb-2" style="border-color: var(--border) !important;">
                         <span class="small text-muted">Validation Accuracy</span>
-                        <span class="font-weight-bold text-white">{{ (metrics.accuracy * 100) | round(2) }}%</span>
+                        <span class="font-weight-bold">{{ (metrics.accuracy * 100) | round(2) }}%</span>
                     </div>
                     
-                    <div class="d-flex justify-content-between align-items-center border-bottom pb-2" style="border-color: var(--border-color) !important;">
+                    <div class="d-flex justify-content-between align-items-center border-bottom pb-2" style="border-color: var(--border) !important;">
                         <span class="small text-muted">Precision Score</span>
-                        <span class="font-weight-bold text-white">{{ (metrics.precision * 100) | round(2) }}%</span>
+                        <span class="font-weight-bold">{{ (metrics.precision * 100) | round(2) }}%</span>
                     </div>
                     
-                    <div class="d-flex justify-content-between align-items-center border-bottom pb-2" style="border-color: var(--border-color) !important;">
+                    <div class="d-flex justify-content-between align-items-center border-bottom pb-2" style="border-color: var(--border) !important;">
                         <span class="small text-muted">Recall / Sensitivity</span>
-                        <span class="font-weight-bold text-white">{{ (metrics.recall * 100) | round(2) }}%</span>
+                        <span class="font-weight-bold">{{ (metrics.recall * 100) | round(2) }}%</span>
                     </div>
                     
-                    <div class="d-flex justify-content-between align-items-center border-bottom pb-2" style="border-color: var(--border-color) !important;">
+                    <div class="d-flex justify-content-between align-items-center border-bottom pb-2" style="border-color: var(--border) !important;">
                         <span class="small text-muted">Specificity Score</span>
-                        <span class="font-weight-bold text-white">{{ (metrics.specificity * 100) | round(2) }}%</span>
+                        <span class="font-weight-bold">{{ (metrics.specificity * 100) | round(2) }}%</span>
                     </div>
                 </div>
             {% else %}

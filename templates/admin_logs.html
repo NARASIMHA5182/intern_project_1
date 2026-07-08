@@ -25,11 +25,11 @@
                         <tr>
                             <td class="font-monospace text-muted">{{ l.timestamp.strftime('%Y-%m-%d %H:%M:%S') if l.timestamp else '' }}</td>
                             <td>
-                                <span class="badge {% if l.level == 'INFO' %}bg-info{% elif l.level == 'WARNING' %}bg-warning{% elif l.level == 'ERROR' %}bg-danger{% else %}bg-secondary{% endif %} bg-opacity-25 {% if l.level == 'INFO' %}text-info{% elif l.level == 'WARNING' %}text-warning{% elif l.level == 'ERROR' %}text-danger{% else %}text-white{% endif %} font-weight-bold" style="font-size: 0.75rem;">
+                                <span class="badge {% if l.level == 'INFO' %}bg-info{% elif l.level == 'WARNING' %}bg-warning{% elif l.level == 'ERROR' %}bg-danger{% else %}bg-secondary{% endif %} bg-opacity-25 {% if l.level == 'INFO' %}text-info{% elif l.level == 'WARNING' %}text-warning{% elif l.level == 'ERROR' %}text-danger{% else %}text-theme-primary{% endif %} font-weight-bold" style="font-size: 0.75rem;">
                                     {{ l.level }}
                                 </span>
                             </td>
-                            <td class="font-monospace text-white">{{ l.module or 'root' }}</td>
+                            <td class="font-monospace">{{ l.module or 'root' }}</td>
                             <td class="small">{{ l.message }}</td>
                         </tr>
                         {% else %}

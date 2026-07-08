@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
             rootElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('apex-theme', newTheme);
             updateThemeIcon(newTheme);
+            window.dispatchEvent(new Event('theme-changed'));
         });
     }
     

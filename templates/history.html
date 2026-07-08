@@ -9,14 +9,14 @@
         <div class="glass-card">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <div>
-                    <h3 class="h5 font-weight-bold m-0 text-white">Application Ledger Logs</h3>
+                    <h3 class="h5 font-weight-bold m-0">Application Ledger Logs</h3>
                     <p class="text-muted small m-0">Review past credit score evaluations and prediction logs.</p>
                 </div>
                 <div class="d-flex gap-2">
-                    <a href="{{ url_for('predict.export_excel') }}" class="btn btn-outline-secondary btn-sm text-white border-secondary">
+                    <a href="{{ url_for('predict.export_excel') }}" class="btn btn-outline-secondary btn-sm">
                         <i class="fas fa-file-excel text-success me-1"></i> Export Excel
                     </a>
-                    <a href="{{ url_for('predict.export_pdf') }}" class="btn btn-outline-secondary btn-sm text-white border-secondary">
+                    <a href="{{ url_for('predict.export_pdf') }}" class="btn btn-outline-secondary btn-sm">
                         <i class="fas fa-file-pdf text-danger me-1"></i> Export PDF Report
                     </a>
                 </div>

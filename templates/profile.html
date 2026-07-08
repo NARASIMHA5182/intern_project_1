@@ -12,16 +12,16 @@
                 {{ current_user.username[0].upper() }}
             </div>
             
-            <h2 class="h4 font-weight-bold text-white mb-1">{{ current_user.username }}</h2>
+            <h2 class="h4 font-weight-bold mb-1">{{ current_user.username }}</h2>
             <span class="badge bg-primary bg-opacity-25 text-primary border border-primary border-opacity-50 px-3 py-1">{{ current_user.role | upper }}</span>
             <p class="text-muted small mt-2">Member Since: {{ current_user.created_at.strftime('%Y-%m-%d') }}</p>
             
-            <div class="row mt-4 pt-4 border-top" style="border-color: var(--border-color) !important;">
-                <div class="col-4 border-end" style="border-color: var(--border-color) !important;">
+            <div class="row mt-4 pt-4 border-top" style="border-color: var(--border) !important;">
+                <div class="col-4 border-end" style="border-color: var(--border) !important;">
                     <div class="text-muted small">Total Runs</div>
-                    <div class="fs-5 font-weight-bold text-white">{{ stats.total }}</div>
+                    <div class="fs-5 font-weight-bold">{{ stats.total }}</div>
                 </div>
-                <div class="col-4 border-end" style="border-color: var(--border-color) !important;">
+                <div class="col-4 border-end" style="border-color: var(--border) !important;">
                     <div class="text-muted small">Approved</div>
                     <div class="fs-5 font-weight-bold text-success">{{ stats.approved }}</div>
                 </div>
@@ -36,7 +36,7 @@
     <!-- Edit Profile Card Column -->
     <div class="col-lg-8">
         <div class="glass-card">
-            <h3 class="h5 font-weight-bold mb-3 border-bottom pb-2" style="border-color: var(--border-color) !important; color: var(--accent-cyan);">
+            <h3 class="h5 font-weight-bold mb-3 border-bottom pb-2" style="border-color: var(--border) !important; color: var(--primary);">
                 <i class="fas fa-user-shield me-2"></i> Update Security Credentials
             </h3>
             
