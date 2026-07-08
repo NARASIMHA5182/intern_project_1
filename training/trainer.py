@@ -203,4 +203,11 @@ def run_training_pipeline():
     return results, best_run, X_test, y_test
 
 if __name__ == '__main__':
-    run_training_pipeline()
+    results, best_run, X_test, y_test = run_training_pipeline()
+    # Regenerate evaluation plots and metrics.joblib locally
+    import joblib
+    meta_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'models', 'model_meta.joblib')
+    if os.path.exists(meta_path):
+        meta = joblib.load(meta_path)
+        from evaluation.evaluator import run_evaluation_pipeline
+        run_evaluation_pipeline(meta, best_run['model'], X_test, y_test)

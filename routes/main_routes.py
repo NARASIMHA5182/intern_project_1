@@ -29,7 +29,7 @@ def contact():
         message = request.form.get('message')
         
         logger.info(f"Contact query from {name} ({email}): {subject} - {message[:50]}...")
-        flash("Thank you for contacting Vanguard Support. Your message has been received.", "success")
+        flash("Thank you for contacting Apex Support. Your message has been received.", "success")
         return redirect(url_for('main.contact'))
     return render_template('contact.html')
 

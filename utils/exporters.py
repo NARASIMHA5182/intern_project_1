@@ -139,7 +139,7 @@ def export_predictions_to_pdf(predictions_list):
     )
     
     # 1. Document Header
-    story.append(Paragraph("VANGUARD CREDIT SERVICES", title_style))
+    story.append(Paragraph("APEX CREDIT SERVICES", title_style))
     story.append(Paragraph(
         f"Credit Card Approval System Audit Report | Generated on: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}", 
         subtitle_style

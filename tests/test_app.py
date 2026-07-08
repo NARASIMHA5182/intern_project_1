@@ -11,7 +11,7 @@ from database.models import db, User, Prediction
 from preprocessing.cleaner import DataCleaner
 from preprocessing.transformer import DataTransformer
 
-class VanguardSystemTestCase(unittest.TestCase):
+class ApexSystemTestCase(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         """

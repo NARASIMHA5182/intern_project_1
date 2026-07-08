@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Executive Board | Vanguard Credit Services{% endblock %}
+{% block title %}Executive Board | Apex Credit Services{% endblock %}
 {% block header_title %}Executive Analytics Board{% endblock %}
 
 {% block content %}
@@ -163,8 +163,8 @@
                 labels: ['Approved', 'Rejected'],
                 datasets: [{
                     data: [{{ stats.approved_count }}, {{ stats.rejected_count }}],
-                    backgroundColor: ['#10b981', '#ef4444'],
-                    borderColor: 'rgba(0, 82, 204, 0.15)',
+                    backgroundColor: ['#10b981', '#f87171'],
+                    borderColor: 'rgba(212, 175, 55, 0.15)',
                     borderWidth: 2
                 }]
             },
@@ -174,7 +174,7 @@
                 plugins: {
                     legend: {
                         position: 'bottom',
-                        labels: { color: '#94a3b8', font: { family: 'Outfit' } }
+                        labels: { color: '#8e9e95', font: { family: 'Outfit' } }
                     }
                 }
             }
@@ -191,8 +191,8 @@
                     label: 'Applicant Frequency',
                     // Let's seed mock counts or calculate from database later if needed. For now, seed realistic numbers
                     data: [12, 28, 45, 30, 15],
-                    backgroundColor: 'rgba(0, 242, 254, 0.4)',
-                    borderColor: '#00f2fe',
+                    backgroundColor: 'rgba(212, 175, 55, 0.4)',
+                    borderColor: '#ecd19a',
                     borderWidth: 2,
                     borderRadius: 4
                 }]
@@ -204,8 +204,8 @@
                     legend: { display: false }
                 },
                 scales: {
-                    x: { ticks: { color: '#94a3b8', font: { family: 'Outfit' } }, grid: { display: false } },
-                    y: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(255,255,255,0.05)' } }
+                    x: { ticks: { color: '#8e9e95', font: { family: 'Outfit' } }, grid: { display: false } },
+                    y: { ticks: { color: '#8e9e95' }, grid: { color: 'rgba(255,255,255,0.05)' } }
                 }
             }
         });

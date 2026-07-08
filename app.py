@@ -53,9 +53,9 @@ def create_app():
         try:
             from database.models import Setting
             sys_name_setting = Setting.query.filter_by(config_key='system_name').first()
-            sys_name = sys_name_setting.config_value if sys_name_setting else "Vanguard Credit"
+            sys_name = sys_name_setting.config_value if sys_name_setting else "Apex Credit"
         except Exception:
-            sys_name = "Vanguard Credit"
+            sys_name = "Apex Credit"
         return dict(system_name=sys_name)
 
     # Register Error Handlers

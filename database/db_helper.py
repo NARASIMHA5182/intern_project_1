@@ -28,7 +28,7 @@ def seed_settings():
     Seeds default configuration settings in settings table.
     """
     defaults = [
-        ('system_name', 'Vanguard Credit Services', 'The name of the banking application shown in the UI.'),
+        ('system_name', 'Apex Credit Services', 'The name of the banking application shown in the UI.'),
         ('min_credit_score_approved', '650', 'Baseline credit score for auto-approval consideration.'),
         ('max_debt_ratio_approved', '0.45', 'Maximum allowed debt ratio for auto-approval.'),
         ('default_model', 'Best Classifier', 'The current active machine learning model for predictions.'),
@@ -41,6 +41,9 @@ def seed_settings():
         if not existing:
             new_setting = Setting(config_key=key, config_value=val)
             db.session.add(new_setting)
+        else:
+            if key == 'system_name' and existing.config_value == 'Vanguard Credit Services':
+                existing.config_value = val
     try:
         db.session.commit()
     except Exception as e:

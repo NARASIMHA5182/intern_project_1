@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const rootElement = document.documentElement;
     
     // Check saved theme or default to dark
-    const savedTheme = localStorage.getItem('vanguard-theme') || 'dark';
+    const savedTheme = localStorage.getItem('apex-theme') || 'dark';
     rootElement.setAttribute('data-theme', savedTheme);
     updateThemeIcon(savedTheme);
     
@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const currentTheme = rootElement.getAttribute('data-theme');
             const newTheme = currentTheme === 'light' ? 'dark' : 'light';
             rootElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('vanguard-theme', newTheme);
+            localStorage.setItem('apex-theme', newTheme);
             updateThemeIcon(newTheme);
         });
     }
