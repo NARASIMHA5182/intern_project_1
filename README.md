@@ -1,6 +1,6 @@
-# Vanguard Credit Risk Predictor (AI-Powered System)
+# Apex Credit Risk Predictor (AI-Powered System)
 
-Vanguard Credit Risk Predictor is a production-ready, industry-grade machine learning web application built on Python 3.11 and Flask. It predicts whether credit card applications should be Approved or Rejected based on 21 financial and demographic inputs. Designed with a premium dark-mode glassmorphic interface, it incorporates automated model comparisons, local feature explanations (SHAP-style), PDF audit trail generation, and bulk CSV uploads.
+Apex Credit Risk Predictor is a production-ready, industry-grade machine learning web application built on Python 3.11 and Flask. It predicts whether credit card applications should be Approved or Rejected based on 21 financial and demographic inputs. Designed with a premium dark-mode glassmorphic interface, it incorporates automated model comparisons, local feature explanations (SHAP-style), PDF audit trail generation, and bulk CSV uploads.
 
 ---
 
